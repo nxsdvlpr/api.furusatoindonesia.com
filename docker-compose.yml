@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  furusato_dev-main-db:
+    container_name: furusato_dev-main-db
+    image: postgres:13
+    hostname: furusato_dev-main-db
+    ports:
+      - '5757:5432'
+    restart: always
+    volumes:
+      - furusato_dev_main_db_data:/var/lib/postgresql/data
+    environment:
+      TZ: 'UTC'
+      POSTGRES_DB: api-furusato
+      POSTGRES_USER: api-furusato-user
+      POSTGRES_PASSWORD: 90Lz1AHTsXe293F0WS4FSr
+    networks:
+      - furusato_net
+  furusato_dev-redis:
+    container_name: furusato_dev-redis
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - 6868:6379
+    command: redis-server --save 60 1 --requirepass 90Lz1AHTsXe293F0WS4FSr --loglevel warning
+    networks:
+      - furusato_net
+volumes:
+  furusato_dev_main_db_data:
+
+networks:
+  furusato_net:
+    driver: bridge
