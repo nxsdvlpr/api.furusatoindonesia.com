@@ -23,11 +23,6 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'partner_id',
-            type: 'integer',
-            isNullable: true,
-          },
-          {
             name: 'created_at',
             type: 'timestamptz',
             default: 'now()',
@@ -53,6 +48,7 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
           {
             name: 'phone',
             type: 'varchar',
+            isNullable: true,
           },
         ],
       }),
@@ -66,13 +62,6 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
         referencedColumnNames: ['id'],
         onDelete: 'CASCADE',
       }),
-
-      new TableForeignKey({
-        columnNames: ['partner_id'],
-        referencedTableName: 'partner',
-        referencedColumnNames: ['id'],
-        onDelete: 'SET NULL',
-      }),
     ]);
   }
 
@@ -84,12 +73,6 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
     );
     await queryRunner.dropForeignKey('user', roleIdForeignKey);
     await queryRunner.dropColumn('user', 'role_id');
-
-    const partnerIdForeignKey = table.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('partner_id') !== -1,
-    );
-    await queryRunner.dropForeignKey('user', partnerIdForeignKey);
-    await queryRunner.dropColumn('user', 'partner_id');
 
     await queryRunner.dropTable('user');
   }

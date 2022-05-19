@@ -1,13 +1,11 @@
-import { Partner } from 'src/partner/partner.entity';
 import { Role } from 'src/role/role.entity';
-import { Tradein } from 'src/tradein/tradein.entity';
+
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,13 +24,6 @@ export class User {
 
   @Column({ nullable: true })
   partnerId?: number;
-
-  @ManyToOne(() => Partner, (partner) => partner.users)
-  @JoinColumn()
-  partner: Partner;
-
-  @OneToMany(() => Tradein, (tradein) => tradein.verifierUser)
-  tradeins!: Tradein[];
 
   @CreateDateColumn()
   createdAt!: Date;
