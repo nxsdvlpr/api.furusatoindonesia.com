@@ -22,7 +22,7 @@ services:
     image: redis:6.2-alpine
     restart: always
     ports:
-      - 6868:6379
+      - 6767:6379
     command: redis-server --save 60 1 --requirepass 90Lz1AHTsXe293F0WS4FSr --loglevel warning
     networks:
       - furusato_net

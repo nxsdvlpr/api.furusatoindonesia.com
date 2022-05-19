@@ -10,15 +10,9 @@ import { QueueOptions } from 'bull';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CommonModule } from './common/common.module';
-import { ApiModule } from './api/api.module';
-import { VoucherModule } from './voucher/voucher.module';
-import { TradeinModule } from './tradein/tradein.module';
-import { TradeinPhotoModule } from './tradein-photo/tradein-photo.module';
 import { RoleModule } from './role/role.module';
-import { PartnerModule } from './partner/partner.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { ProcessorModule } from './processor/processor.module';
 import { MailModule } from './mail/mail.module';
 
 @Module({
@@ -55,14 +49,8 @@ import { MailModule } from './mail/mail.module';
     CommonModule,
     MailModule,
     CloudinaryModule,
-    ApiModule,
     RoleModule,
-    PartnerModule,
     UserModule,
-    ProcessorModule,
-    VoucherModule,
-    TradeinModule,
-    TradeinPhotoModule,
   ],
   providers: [
     {
