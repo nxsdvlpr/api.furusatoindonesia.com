@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { InjectQueryService, QueryService } from '@nestjs-query/core';
 import * as bcrypt from 'bcrypt';
 
 import { LoginResponseDto } from './dto/login-response.dto';
@@ -8,7 +7,6 @@ import { AuthenticatedUser, JwtPayload } from './auth.interfaces';
 import { UpdateProfileInputDto } from './dto/update-profile.input.dto';
 import { CommonService } from 'src/common/common.service';
 import { UserDto } from 'src/user/dto/user.dto';
-import { User } from 'src/user/user.entity';
 import { UserService } from 'src/user/user.service';
 
 @Injectable()
@@ -33,7 +31,6 @@ export class AuthService {
         id: user.id,
         username: user.username,
         role: user.role,
-        partnerId: user.partnerId,
       };
     }
 
@@ -58,7 +55,6 @@ export class AuthService {
       username: loginUser.username,
       sub: loginUser.id,
       role: loginUser.role,
-      partnerId: loginUser.partnerId,
     };
 
     return Promise.resolve({

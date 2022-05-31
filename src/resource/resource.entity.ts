@@ -1,20 +1,15 @@
-import { User } from 'src/user/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Role {
+export class Resource {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @OneToMany(() => User, (user) => user.role)
-  users: User[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -23,11 +18,20 @@ export class Role {
   updatedAt: Date;
 
   @Column()
-  name: string;
+  slug: string;
 
   @Column()
-  shortname: string;
+  subject: string;
 
-  @Column({ type: 'simple-json', nullable: true })
-  access: any;
+  @Column()
+  excerpt: string;
+
+  @Column()
+  body: string;
+
+  @Column()
+  published: boolean;
+
+  @Column()
+  publishedAt: Date;
 }

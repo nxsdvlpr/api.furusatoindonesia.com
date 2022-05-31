@@ -5,11 +5,11 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class CreateUserTable1645160828153 implements MigrationInterface {
+export class CreateBlogTable1645160828155 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'user',
+        name: 'blog',
         columns: [
           {
             name: 'id',
@@ -19,7 +19,7 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'role_id',
+            name: 'user_id',
             type: 'integer',
           },
           {
@@ -33,32 +33,40 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'username',
-            type: 'varchar',
-            isUnique: true,
-          },
-          {
-            name: 'password',
+            name: 'slug',
             type: 'varchar',
           },
           {
-            name: 'name',
+            name: 'subject',
             type: 'varchar',
           },
           {
-            name: 'phone',
-            type: 'varchar',
-            isNullable: true,
+            name: 'excerpt',
+            type: 'text',
+          },
+          {
+            name: 'body',
+            type: 'text',
+          },
+          {
+            name: 'published',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'published_at',
+            type: 'timestamptz',
+            default: 'now()',
           },
         ],
       }),
       true,
     );
 
-    await queryRunner.createForeignKeys('user', [
+    await queryRunner.createForeignKeys('blog', [
       new TableForeignKey({
-        columnNames: ['role_id'],
-        referencedTableName: 'role',
+        columnNames: ['user_id'],
+        referencedTableName: 'user',
         referencedColumnNames: ['id'],
         onDelete: 'CASCADE',
       }),
@@ -66,14 +74,14 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('user');
+    const table = await queryRunner.getTable('blog');
 
     const foreignKey = table.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('role_id') !== -1,
+      (fk) => fk.columnNames.indexOf('user_id') !== -1,
     );
-    await queryRunner.dropForeignKey('user', foreignKey);
-    await queryRunner.dropColumn('user', 'role_id');
+    await queryRunner.dropForeignKey('blog', foreignKey);
+    await queryRunner.dropColumn('blog', 'user_id');
 
-    await queryRunner.dropTable('user');
+    await queryRunner.dropTable('blog');
   }
 }
