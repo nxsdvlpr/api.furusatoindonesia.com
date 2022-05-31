@@ -8,9 +8,10 @@ import {
   QueryOptions,
 } from '@nestjs-query/query-graphql';
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
+import { BlogDto } from 'src/blog/dto/blog.dto';
 import { RoleDto } from 'src/role/dto/role.dto';
-import { UserBeforeCreateHook } from '../user-berfore-create.hook';
-import { UserBeforeUpdateHook } from '../user-berfore-update.hook';
+import { UserBeforeCreateHook } from '../hooks/user-berfore-create.hook';
+import { UserBeforeUpdateHook } from '../hooks/user-berfore-update.hook';
 
 @ObjectType('User')
 @BeforeCreateOne(UserBeforeCreateHook)
@@ -19,15 +20,15 @@ import { UserBeforeUpdateHook } from '../user-berfore-update.hook';
 @FilterableRelation('role', () => RoleDto, {
   disableRemove: true,
 })
+@FilterableUnPagedRelation('blogs', () => BlogDto, {
+  disableRemove: true,
+})
 export class UserDto {
   @IDField(() => ID)
   id: number;
 
   @FilterableField(() => ID)
   roleId: number;
-
-  @FilterableField(() => ID, { nullable: true })
-  partnerId?: number;
 
   @Field(() => GraphQLISODateTime)
   createdAt: Date;
@@ -44,6 +45,6 @@ export class UserDto {
   @FilterableField()
   name: string;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
   phone: string;
 }

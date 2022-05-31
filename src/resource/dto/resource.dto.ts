@@ -1,19 +1,13 @@
 import {
   FilterableField,
-  FilterableUnPagedRelation,
   IDField,
   QueryOptions,
 } from '@nestjs-query/query-graphql';
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
-import GraphQLJSON from 'graphql-type-json';
-import { UserDto } from 'src/user/dto/user.dto';
 
-@ObjectType('Role')
+@ObjectType('Resource')
 @QueryOptions({ enableTotalCount: true })
-@FilterableUnPagedRelation('users', () => UserDto, {
-  disableRemove: true,
-})
-export class RoleDto {
+export class ResourceDto {
   @IDField(() => ID)
   id: number;
 
@@ -24,11 +18,20 @@ export class RoleDto {
   updatedAt: Date;
 
   @FilterableField()
-  name: string;
+  slug: string;
 
   @FilterableField()
-  shortname: string;
+  subject: string;
 
-  @FilterableField(() => GraphQLJSON, { nullable: true })
-  access: string;
+  @FilterableField()
+  excerpt: string;
+
+  @FilterableField()
+  body: string;
+
+  @FilterableField()
+  published: boolean;
+
+  @Field(() => GraphQLISODateTime)
+  publishedAt: Date;
 }

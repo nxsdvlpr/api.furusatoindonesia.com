@@ -3,18 +3,23 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Role {
+export class Blog {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(() => User, (user) => user.role)
-  users: User[];
+  @Column()
+  userId: number;
+
+  @ManyToOne(() => User, (user) => user.blogs)
+  @JoinColumn()
+  user: User;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -23,11 +28,20 @@ export class Role {
   updatedAt: Date;
 
   @Column()
-  name: string;
+  slug: string;
 
   @Column()
-  shortname: string;
+  subject: string;
 
-  @Column({ type: 'simple-json', nullable: true })
-  access: any;
+  @Column()
+  excerpt: string;
+
+  @Column()
+  body: string;
+
+  @Column()
+  published: boolean;
+
+  @Column()
+  publishedAt: Date;
 }

@@ -1,19 +1,23 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { getConnectionOptions } from 'typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { Module } from '@nestjs/common';
-import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bull';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { getConnectionOptions } from 'typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { QueueOptions } from 'bull';
 
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CommonModule } from './common/common.module';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RoleModule } from './role/role.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
+import { OptionModule } from './option/option.module';
+import { BlogModule } from './blog/blog.module';
+import { PostModule } from './post/post.module';
+import { ResourceModule } from './resource/resource.module';
 
 @Module({
   imports: [
@@ -26,31 +30,35 @@ import { MailModule } from './mail/mail.module';
           namingStrategy: new SnakeNamingStrategy(),
         }),
     }),
-    BullModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (
-        configService: ConfigService,
-      ): Promise<QueueOptions> => ({
-        redis: {
-          host: configService.get<string>('REDIS_QUEUE_HOST'),
-          port: configService.get<number>('REDIS_QUEUE_PORT'),
-          password: configService.get<string>('REDIS_QUEUE_PASS'),
-        },
-      }),
-    }),
+    // BullModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   inject: [ConfigService],
+    //   useFactory: async (
+    //     configService: ConfigService,
+    //   ): Promise<QueueOptions> => ({
+    //     redis: {
+    //       host: configService.get<string>('REDIS_QUEUE_HOST'),
+    //       port: configService.get<number>('REDIS_QUEUE_PORT'),
+    //       password: configService.get<string>('REDIS_QUEUE_PASS'),
+    //     },
+    //   }),
+    // }),
     GraphQLModule.forRoot({
       autoSchemaFile: true,
       buildSchemaOptions: {
         numberScalarMode: 'integer',
       },
     }),
-    AuthModule,
     CommonModule,
-    MailModule,
+    // MailModule,
     CloudinaryModule,
+    OptionModule,
+    AuthModule,
     RoleModule,
     UserModule,
+    PostModule,
+    BlogModule,
+    ResourceModule,
   ],
   providers: [
     {
