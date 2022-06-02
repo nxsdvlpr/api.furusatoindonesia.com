@@ -30,19 +30,19 @@ import { ResourceModule } from './resource/resource.module';
           namingStrategy: new SnakeNamingStrategy(),
         }),
     }),
-    // BullModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: async (
-    //     configService: ConfigService,
-    //   ): Promise<QueueOptions> => ({
-    //     redis: {
-    //       host: configService.get<string>('REDIS_QUEUE_HOST'),
-    //       port: configService.get<number>('REDIS_QUEUE_PORT'),
-    //       password: configService.get<string>('REDIS_QUEUE_PASS'),
-    //     },
-    //   }),
-    // }),
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (
+        configService: ConfigService,
+      ): Promise<QueueOptions> => ({
+        redis: {
+          host: configService.get<string>('REDIS_QUEUE_HOST'),
+          port: configService.get<number>('REDIS_QUEUE_PORT'),
+          password: configService.get<string>('REDIS_QUEUE_PASS'),
+        },
+      }),
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: true,
       buildSchemaOptions: {
@@ -50,7 +50,7 @@ import { ResourceModule } from './resource/resource.module';
       },
     }),
     CommonModule,
-    // MailModule,
+    MailModule,
     CloudinaryModule,
     OptionModule,
     AuthModule,
