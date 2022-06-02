@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreatePostTable1645160828154 implements MigrationInterface {
+export class CreateArticleTable1645160828154 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'post',
+        name: 'article',
         columns: [
           {
             name: 'id',
@@ -14,39 +14,25 @@ export class CreatePostTable1645160828154 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
+            name: 'name',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'group',
             type: 'varchar',
           },
           {
-            name: 'title',
+            name: 'subject',
             type: 'varchar',
-          },
-          {
-            name: 'title_jp',
-            type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'excerpt',
-            type: 'varchar',
-          },
-          {
-            name: 'excerpt_jp',
-            type: 'varchar',
-            isNullable: true,
+            type: 'text',
           },
           {
             name: 'body',
             type: 'text',
-          },
-          {
-            name: 'body_jp',
-            type: 'text',
-            isNullable: true,
-          },
-          {
-            name: 'icon',
-            type: 'varchar',
             isNullable: true,
           },
           {
@@ -55,8 +41,14 @@ export class CreatePostTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'publish',
+            name: 'icon',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'published',
             type: 'boolean',
+            default: true,
           },
           {
             name: 'sequence',
@@ -69,6 +61,6 @@ export class CreatePostTable1645160828154 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('post');
+    await queryRunner.dropTable('article');
   }
 }

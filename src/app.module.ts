@@ -16,8 +16,10 @@ import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { OptionModule } from './option/option.module';
 import { BlogModule } from './blog/blog.module';
-import { PostModule } from './post/post.module';
 import { ResourceModule } from './resource/resource.module';
+import { ArticleModule } from './article/article.module';
+import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
+import { OrganizationPeopleModule } from './organization-people/organization-people.module';
 
 @Module({
   imports: [
@@ -30,19 +32,19 @@ import { ResourceModule } from './resource/resource.module';
           namingStrategy: new SnakeNamingStrategy(),
         }),
     }),
-    // BullModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: async (
-    //     configService: ConfigService,
-    //   ): Promise<QueueOptions> => ({
-    //     redis: {
-    //       host: configService.get<string>('REDIS_QUEUE_HOST'),
-    //       port: configService.get<number>('REDIS_QUEUE_PORT'),
-    //       password: configService.get<string>('REDIS_QUEUE_PASS'),
-    //     },
-    //   }),
-    // }),
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (
+        configService: ConfigService,
+      ): Promise<QueueOptions> => ({
+        redis: {
+          host: configService.get<string>('REDIS_QUEUE_HOST'),
+          port: configService.get<number>('REDIS_QUEUE_PORT'),
+          password: configService.get<string>('REDIS_QUEUE_PASS'),
+        },
+      }),
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: true,
       buildSchemaOptions: {
@@ -50,15 +52,17 @@ import { ResourceModule } from './resource/resource.module';
       },
     }),
     CommonModule,
-    // MailModule,
+    MailModule,
     CloudinaryModule,
     OptionModule,
     AuthModule,
     RoleModule,
     UserModule,
-    PostModule,
+    ArticleModule,
     BlogModule,
     ResourceModule,
+    OrganizationStructureModule,
+    OrganizationPeopleModule,
   ],
   providers: [
     {

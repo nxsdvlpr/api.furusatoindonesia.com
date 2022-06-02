@@ -1,10 +1,12 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateResourceTable1645160828156 implements MigrationInterface {
+export class CreateOrganizationStructureTable1645160828157
+  implements MigrationInterface
+{
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'resource',
+        name: 'organization_structure',
         columns: [
           {
             name: 'id',
@@ -24,30 +26,16 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'slug',
-            type: 'varchar',
-          },
-          {
             name: 'subject',
             type: 'varchar',
           },
           {
-            name: 'excerpt',
+            name: 'description',
             type: 'text',
           },
           {
-            name: 'body',
-            type: 'text',
-          },
-          {
-            name: 'published',
-            type: 'boolean',
-            default: true,
-          },
-          {
-            name: 'published_at',
-            type: 'timestamptz',
-            default: 'now()',
+            name: 'sequence',
+            type: 'int',
           },
         ],
       }),
@@ -56,6 +44,6 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('resource');
+    await queryRunner.dropTable('organization_structure');
   }
 }

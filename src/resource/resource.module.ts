@@ -8,6 +8,9 @@ import { Resource } from './resource.entity';
 import { ResourceDto } from './dto/resource.dto';
 import { ResourceSeeder } from './resource.seeder';
 import { ResourceService } from './resource.service';
+import { ResourceResolver } from './resource.resolver';
+import { CreateResourceInput } from './dto/create-resource.input';
+import { UpdateResourceInput } from './dto/update-resource.input';
 
 @Module({
   imports: [
@@ -17,15 +20,23 @@ import { ResourceService } from './resource.service';
       resolvers: [
         {
           DTOClass: ResourceDto,
+          CreateDTOClass: CreateResourceInput,
+          UpdateDTOClass: UpdateResourceInput,
           EntityClass: Resource,
           ServiceClass: ResourceService,
           enableAggregate: true,
+          create: {
+            disabled: true,
+          },
+          update: {
+            disabled: true,
+          },
         },
       ],
     }),
     TypeOrmModule.forFeature([Resource]),
   ],
-  providers: [ResourceSeeder, CommonService],
+  providers: [ResourceResolver, ResourceSeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })
 export class ResourceModule {}

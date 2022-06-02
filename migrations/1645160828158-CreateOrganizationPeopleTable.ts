@@ -5,11 +5,13 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class CreateBlogTable1645160828155 implements MigrationInterface {
+export class CreateOrganizationPeopleTable1645160828158
+  implements MigrationInterface
+{
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'blog',
+        name: 'organization_people',
         columns: [
           {
             name: 'id',
@@ -19,7 +21,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'user_id',
+            name: 'organization_structure_id',
             type: 'integer',
           },
           {
@@ -33,40 +35,31 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'slug',
+            name: 'fullname',
             type: 'varchar',
           },
           {
-            name: 'subject',
+            name: 'profession',
             type: 'varchar',
           },
           {
-            name: 'excerpt',
-            type: 'text',
+            name: 'image',
+            type: 'varchar',
+            isNullable: true,
           },
           {
-            name: 'body',
-            type: 'text',
-          },
-          {
-            name: 'published',
-            type: 'boolean',
-            default: true,
-          },
-          {
-            name: 'published_at',
-            type: 'timestamptz',
-            default: 'now()',
+            name: 'sequence',
+            type: 'int',
           },
         ],
       }),
       true,
     );
 
-    await queryRunner.createForeignKeys('blog', [
+    await queryRunner.createForeignKeys('organization_people', [
       new TableForeignKey({
-        columnNames: ['user_id'],
-        referencedTableName: 'user',
+        columnNames: ['organization_structure_id'],
+        referencedTableName: 'organization_structure',
         referencedColumnNames: ['id'],
         onDelete: 'CASCADE',
       }),
@@ -74,14 +67,17 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('blog');
+    const table = await queryRunner.getTable('organization_people');
 
     const foreignKey = table.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('user_id') !== -1,
+      (fk) => fk.columnNames.indexOf('organization_structure_id') !== -1,
     );
-    await queryRunner.dropForeignKey('blog', foreignKey);
-    await queryRunner.dropColumn('blog', 'user_id');
+    await queryRunner.dropForeignKey('organization_people', foreignKey);
+    await queryRunner.dropColumn(
+      'organization_people',
+      'organization_structure_id',
+    );
 
-    await queryRunner.dropTable('blog');
+    await queryRunner.dropTable('organization_people');
   }
 }

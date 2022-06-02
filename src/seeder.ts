@@ -14,11 +14,15 @@ import { UserSeeder } from './user/user.seeder';
 import { OptionSeeder } from './option/option.seeder';
 import { OptionModule } from './option/option.module';
 import { BlogSeeder } from './blog/blog.seeder';
-import { PostSeeder } from './post/post.seeder';
 import { BlogModule } from './blog/blog.module';
-import { PostModule } from './post/post.module';
 import { ResourceModule } from './resource/resource.module';
 import { ResourceSeeder } from './resource/resource.seeder';
+import { ArticleSeeder } from './article/article.seeder';
+import { ArticleModule } from './article/article.module';
+import { OrganizationStructureSeeder } from './organization-structure/organization-structure.seeder';
+import { OrganizationPeopleSeeder } from './organization-people/organization-people.seeder';
+import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
+import { OrganizationPeopleModule } from './organization-people/organization-people.module';
 
 seeder({
   imports: [
@@ -45,15 +49,19 @@ seeder({
     OptionModule,
     RoleModule,
     UserModule,
-    PostModule,
+    ArticleModule,
     BlogModule,
     ResourceModule,
+    OrganizationStructureModule,
+    OrganizationPeopleModule,
   ],
 }).run([
   OptionSeeder,
   RoleSeeder,
   UserSeeder,
-  PostSeeder,
+  ArticleSeeder,
   BlogSeeder,
   ResourceSeeder,
+  OrganizationStructureSeeder,
+  OrganizationPeopleSeeder,
 ]);

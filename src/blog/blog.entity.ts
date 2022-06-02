@@ -17,7 +17,11 @@ export class Blog {
   @Column()
   userId: number;
 
-  @ManyToOne(() => User, (user) => user.blogs)
+  @ManyToOne(() => User, (user) => user.blogs, {
+    onDelete: 'CASCADE',
+    nullable: false,
+    orphanedRowAction: 'delete',
+  })
   @JoinColumn()
   user: User;
 
