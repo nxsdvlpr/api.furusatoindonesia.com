@@ -1,7 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 
-import { AuthenticatedUser } from 'src/auth/auth.interfaces';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import { CreateResourceInput } from './dto/create-resource.input';
 import { ResourceDto } from './dto/resource.dto';
 import { UpdateResourceInput } from './dto/update-resource.input';

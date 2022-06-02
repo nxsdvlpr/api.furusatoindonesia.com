@@ -16,8 +16,10 @@ import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { OptionModule } from './option/option.module';
 import { BlogModule } from './blog/blog.module';
-import { PostModule } from './post/post.module';
 import { ResourceModule } from './resource/resource.module';
+import { ArticleModule } from './article/article.module';
+import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
+import { OrganizationPeopleModule } from './organization-people/organization-people.module';
 
 @Module({
   imports: [
@@ -56,9 +58,11 @@ import { ResourceModule } from './resource/resource.module';
     AuthModule,
     RoleModule,
     UserModule,
-    PostModule,
+    ArticleModule,
     BlogModule,
     ResourceModule,
+    OrganizationStructureModule,
+    OrganizationPeopleModule,
   ],
   providers: [
     {

@@ -1,45 +1,39 @@
 import {
   FilterableField,
+  FilterableRelation,
   IDField,
   QueryOptions,
 } from '@nestjs-query/query-graphql';
 import { ID, ObjectType } from '@nestjs/graphql';
+import { UserDto } from 'src/user/dto/user.dto';
 
-@ObjectType('Post')
+@ObjectType('Article')
 @QueryOptions({ enableTotalCount: true })
-export class PostDto {
+@FilterableRelation('user', () => UserDto, {
+  disableRemove: true,
+  nullable: true,
+})
+export class ArticleDto {
   @IDField(() => ID)
   id: number;
+
+  @FilterableField({ nullable: true })
+  name: string;
 
   @FilterableField()
   group: string;
 
   @FilterableField()
-  title: string;
-
-  @FilterableField({ nullable: true })
-  titleJp: string;
+  subject: string;
 
   @FilterableField()
   excerpt: string;
 
   @FilterableField({ nullable: true })
-  excerptJp: string;
-
-  @FilterableField()
   body: string;
 
   @FilterableField({ nullable: true })
-  bodyJp: string;
-
-  @FilterableField({ nullable: true })
-  icon: string;
-
-  @FilterableField({ nullable: true })
   image: string;
-
-  @FilterableField()
-  publish: boolean;
 
   @FilterableField()
   sequence: number;
