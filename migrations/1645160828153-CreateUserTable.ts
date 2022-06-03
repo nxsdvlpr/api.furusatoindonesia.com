@@ -68,10 +68,10 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
   public async down(queryRunner: QueryRunner): Promise<void> {
     const table = await queryRunner.getTable('user');
 
-    const roleIdForeignKey = table.foreignKeys.find(
+    const foreignKey = table.foreignKeys.find(
       (fk) => fk.columnNames.indexOf('role_id') !== -1,
     );
-    await queryRunner.dropForeignKey('user', roleIdForeignKey);
+    await queryRunner.dropForeignKey('user', foreignKey);
     await queryRunner.dropColumn('user', 'role_id');
 
     await queryRunner.dropTable('user');

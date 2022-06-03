@@ -5,6 +5,7 @@ import {
   QueryOptions,
 } from '@nestjs-query/query-graphql';
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
+import GraphQLJSON from 'graphql-type-json';
 import { UserDto } from 'src/user/dto/user.dto';
 
 @ObjectType('Role')
@@ -27,4 +28,7 @@ export class RoleDto {
 
   @FilterableField()
   shortname: string;
+
+  @FilterableField(() => GraphQLJSON, { nullable: true })
+  access: string;
 }

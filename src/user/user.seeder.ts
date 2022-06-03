@@ -9,54 +9,29 @@ import * as bcrypt from 'bcrypt';
 export class UserSeeder implements Seeder {
   constructor(
     @InjectRepository(User)
-    private readonly repo: Repository<User>,
+    private readonly userRepository: Repository<User>,
   ) {}
 
   async seed(): Promise<any> {
-    const admins = [];
-    for (let i = 1; i <= 5; i++) {
-      admins.push({
+    await this.userRepository.save([
+      {
         roleId: 1,
-        partnerId: Math.floor(Math.random() * 10) + 1,
-        username: `admin-${i}@app.com`,
-        password: bcrypt.hashSync(`admin-${i}`, 10),
-        name: `Administrator #${i}`,
-        phone: `08110000001${i}`,
-      });
-    }
-
-    await this.repo.save(admins);
-
-    const verifiers = [];
-    for (let i = 1; i <= 40; i++) {
-      verifiers.push({
+        username: `admin@app.com`,
+        password: bcrypt.hashSync(`admin@app.com`, 10),
+        name: `Administrator`,
+        phone: `081100000011`,
+      },
+      {
         roleId: 2,
-        partnerId: Math.floor(Math.random() * 10) + 1,
-        username: `verifier-${i}@app.com`,
-        password: bcrypt.hashSync(`verifier-${i}`, 10),
-        name: `Verifier #${i}`,
-        phone: `08110000002${i}`,
-      });
-    }
-
-    await this.repo.save(verifiers);
-
-    const estores = [];
-    for (let i = 1; i <= 10; i++) {
-      estores.push({
-        roleId: 3,
-        partnerId: Math.floor(Math.random() * 10) + 1,
-        username: `estore-${i}@app.com`,
-        password: bcrypt.hashSync(`estore-${i}`, 10),
-        name: `E-Store #${i}`,
-        phone: `08110000003${i}`,
-      });
-    }
-
-    await this.repo.save(estores);
+        username: `author@app.com`,
+        password: bcrypt.hashSync(`author@app.com`, 10),
+        name: `Author`,
+        phone: `081100000012`,
+      },
+    ]);
   }
 
   async drop(): Promise<any> {
-    await this.repo.clear();
+    await this.userRepository.clear();
   }
 }

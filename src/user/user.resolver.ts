@@ -5,10 +5,10 @@ import { UserService } from './user.service';
 
 @Resolver(() => UserDto)
 export class UserResolver {
-  constructor(private readonly service: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Query(() => Boolean)
   async usernameExists(@Args('username') username: string): Promise<boolean> {
-    return this.service.usernameExists(username);
+    return this.userService.usernameExists(username);
   }
 }

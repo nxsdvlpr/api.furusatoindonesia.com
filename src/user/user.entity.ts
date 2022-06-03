@@ -1,3 +1,4 @@
+import { Blog } from 'src/blog/blog.entity';
 import { Role } from 'src/role/role.entity';
 
 import {
@@ -6,6 +7,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -13,33 +15,37 @@ import {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
+
+  @OneToMany(() => Blog, (blog) => blog.user)
+  blogs!: Blog[];
 
   @Column()
   roleId: number;
 
-  @ManyToOne(() => Role, (role) => role.users)
+  @ManyToOne(() => Role, (role) => role.users, {
+    onDelete: 'CASCADE',
+    nullable: false,
+    orphanedRowAction: 'delete',
+  })
   @JoinColumn()
   role: Role;
 
-  @Column({ nullable: true })
-  partnerId?: number;
-
   @CreateDateColumn()
-  createdAt!: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt!: Date;
+  updatedAt: Date;
 
   @Column()
-  username!: string;
+  username: string;
 
   @Column()
-  password!: string;
+  password: string;
 
   @Column()
-  name!: string;
+  name: string;
 
-  @Column()
-  phone!: string;
+  @Column({ nullable: true })
+  phone: string;
 }

@@ -11,20 +11,23 @@ import {
 @Entity()
 export class Role {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
   @OneToMany(() => User, (user) => user.role)
-  users!: User[];
+  users: User[];
 
   @CreateDateColumn()
-  createdAt!: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt!: Date;
+  updatedAt: Date;
 
   @Column()
-  name!: string;
+  name: string;
 
   @Column()
-  shortname!: string;
+  shortname: string;
+
+  @Column({ type: 'simple-json', nullable: true })
+  access: any;
 }

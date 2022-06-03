@@ -31,6 +31,10 @@ export class CreateRoleTable1645160799580 implements MigrationInterface {
             name: 'shortname',
             type: 'varchar',
           },
+          {
+            name: 'access',
+            type: 'jsonb',
+          },
         ],
       }),
       true,
