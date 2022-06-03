@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, ID, Mutation, Resolver } from '@nestjs/graphql';
 
 import { ArticleService } from './article.service';
 import { ArticleDto } from './dto/article.dto';
@@ -21,5 +21,14 @@ export class ArticleResolver {
     @Args('input') input: UpdateArticleInput,
   ): Promise<ArticleDto> {
     return this.articleService.update(input);
+  }
+
+  @Mutation(() => ArticleDto)
+  async changeSequenceArticle(
+    @Args('id', { type: () => ID }) id: number,
+    @Args('group') group: string,
+    @Args('direction') direction: string,
+  ): Promise<ArticleDto> {
+    return this.articleService.changeSequence(id, group, direction);
   }
 }

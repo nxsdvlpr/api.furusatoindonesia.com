@@ -17,20 +17,26 @@ export class ArticleDto {
   @IDField(() => ID)
   id: number;
 
-  @FilterableField({ nullable: true })
-  name: string;
-
   @FilterableField()
   group: string;
 
   @FilterableField()
   subject: string;
 
+  @FilterableField({ nullable: true })
+  subjectJp: string;
+
   @FilterableField()
   excerpt: string;
 
   @FilterableField({ nullable: true })
+  excerptJp: string;
+
+  @FilterableField({ nullable: true })
   body: string;
+
+  @FilterableField({ nullable: true })
+  bodyJp: string;
 
   @FilterableField({ nullable: true })
   image: string;

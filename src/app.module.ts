@@ -19,7 +19,7 @@ import { BlogModule } from './blog/blog.module';
 import { ResourceModule } from './resource/resource.module';
 import { ArticleModule } from './article/article.module';
 import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
-import { OrganizationPeopleModule } from './organization-people/organization-people.module';
+import { OrganizationMemberModule } from './organization-member/organization-member.module';
 
 @Module({
   imports: [
@@ -62,7 +62,7 @@ import { OrganizationPeopleModule } from './organization-people/organization-peo
     BlogModule,
     ResourceModule,
     OrganizationStructureModule,
-    OrganizationPeopleModule,
+    OrganizationMemberModule,
   ],
   providers: [
     {

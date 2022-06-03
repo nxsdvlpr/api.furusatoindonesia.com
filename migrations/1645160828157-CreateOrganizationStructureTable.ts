@@ -30,8 +30,18 @@ export class CreateOrganizationStructureTable1645160828157
             type: 'varchar',
           },
           {
+            name: 'subject_jp',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'description',
             type: 'text',
+          },
+          {
+            name: 'description_jp',
+            type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'sequence',

@@ -9,8 +9,14 @@ export class OrganizationStructureInput {
   @Field()
   subject: string;
 
+  @Field({ nullable: true })
+  subjectJp: string;
+
   @Field()
   description: string;
+
+  @Field({ nullable: true })
+  descriptionJp: string;
 
   @Field()
   sequence: number;

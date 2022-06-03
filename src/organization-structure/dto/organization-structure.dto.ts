@@ -5,11 +5,11 @@ import {
   QueryOptions,
 } from '@nestjs-query/query-graphql';
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
-import { OrganizationPeopleDto } from 'src/organization-people/dto/organization-people.dto';
+import { OrganizationMemberDto } from 'src/organization-member/dto/organization-member.dto';
 
 @ObjectType('OrganizationStructure')
 @QueryOptions({ enableTotalCount: true })
-@FilterableUnPagedRelation('peoples', () => OrganizationPeopleDto, {
+@FilterableUnPagedRelation('members', () => OrganizationMemberDto, {
   disableRemove: true,
 })
 export class OrganizationStructureDto {
@@ -25,8 +25,14 @@ export class OrganizationStructureDto {
   @FilterableField()
   subject: string;
 
+  @FilterableField({ nullable: true })
+  subjectJp: string;
+
   @FilterableField()
   description: string;
+
+  @FilterableField({ nullable: true })
+  descriptionJp: string;
 
   @FilterableField()
   sequence: number;

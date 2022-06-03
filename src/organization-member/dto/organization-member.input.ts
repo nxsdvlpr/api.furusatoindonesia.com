@@ -2,7 +2,7 @@ import { IDField } from '@nestjs-query/query-graphql';
 import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
-export class OrganizationPeopleInput {
+export class OrganizationMemberInput {
   @IDField(() => ID)
   id: number;
 
@@ -14,6 +14,9 @@ export class OrganizationPeopleInput {
 
   @Field()
   profession: string;
+
+  @Field({ nullable: true })
+  professionJp: string;
 
   @Field({ nullable: true })
   image: string;
