@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class OrganizationPeople {
+export class OrganizationMember {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -19,7 +19,7 @@ export class OrganizationPeople {
 
   @ManyToOne(
     () => OrganizationStructure,
-    (organizationStructure) => organizationStructure.peoples,
+    (organizationStructure) => organizationStructure.members,
     {
       onDelete: 'CASCADE',
       nullable: false,
@@ -40,6 +40,9 @@ export class OrganizationPeople {
 
   @Column()
   profession: string;
+
+  @Column({ nullable: true })
+  professionJp: string;
 
   @Column({ nullable: true })
   image: string;

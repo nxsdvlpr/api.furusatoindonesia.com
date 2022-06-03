@@ -19,10 +19,10 @@ import { ResourceModule } from './resource/resource.module';
 import { ResourceSeeder } from './resource/resource.seeder';
 import { ArticleSeeder } from './article/article.seeder';
 import { ArticleModule } from './article/article.module';
-import { OrganizationStructureSeeder } from './organization-structure/organization-structure.seeder';
-import { OrganizationPeopleSeeder } from './organization-people/organization-people.seeder';
 import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
-import { OrganizationPeopleModule } from './organization-people/organization-people.module';
+import { OrganizationStructureSeeder } from './organization-structure/organization-structure.seeder';
+import { OrganizationMemberSeeder } from './organization-member/organization-member.seeder';
+import { OrganizationMemberModule } from './organization-member/organization-member.module';
 
 seeder({
   imports: [
@@ -53,7 +53,7 @@ seeder({
     BlogModule,
     ResourceModule,
     OrganizationStructureModule,
-    OrganizationPeopleModule,
+    OrganizationMemberModule,
   ],
 }).run([
   OptionSeeder,
@@ -63,5 +63,5 @@ seeder({
   BlogSeeder,
   ResourceSeeder,
   OrganizationStructureSeeder,
-  OrganizationPeopleSeeder,
+  OrganizationMemberSeeder,
 ]);

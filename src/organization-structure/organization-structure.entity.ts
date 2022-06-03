@@ -7,19 +7,17 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { OrganizationPeople } from 'src/organization-people/organization-people.entity';
-
+import { OrganizationMember } from 'src/organization-member/organization-member.entity';
 @Entity()
 export class OrganizationStructure {
   @PrimaryGeneratedColumn()
   id: number;
 
   @OneToMany(
-    () => OrganizationPeople,
-    (organizationOrganizationPeople) =>
-      organizationOrganizationPeople.organization,
+    () => OrganizationMember,
+    (organizationMember) => organizationMember.organization,
   )
-  peoples!: OrganizationPeople[];
+  members: OrganizationMember[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -30,8 +28,14 @@ export class OrganizationStructure {
   @Column()
   subject: string;
 
+  @Column({ nullable: true })
+  subjectJp: string;
+
   @Column()
   description: string;
+
+  @Column({ nullable: true })
+  descriptionJp: string;
 
   @Column()
   sequence: number;

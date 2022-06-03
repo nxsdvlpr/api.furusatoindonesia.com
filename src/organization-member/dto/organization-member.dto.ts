@@ -7,13 +7,13 @@ import {
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
 import { OrganizationStructureDto } from 'src/organization-structure/dto/organization-structure.dto';
 
-@ObjectType('OrganizationPeople')
+@ObjectType('OrganizationMember')
 @QueryOptions({ enableTotalCount: true })
 @FilterableRelation('organization', () => OrganizationStructureDto, {
   disableRemove: true,
   nullable: true,
 })
-export class OrganizationPeopleDto {
+export class OrganizationMemberDto {
   @IDField(() => ID)
   id: number;
 
@@ -31,6 +31,9 @@ export class OrganizationPeopleDto {
 
   @FilterableField()
   profession: string;
+
+  @FilterableField({ nullable: true })
+  professionJp: string;
 
   @FilterableField({ nullable: true })
   image: string;

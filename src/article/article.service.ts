@@ -24,6 +24,15 @@ export class ArticleService extends TypeOrmQueryService<Article> {
   async create(input: CreateArticleInput): Promise<Article> {
     const article = Object.assign(new Article(), input);
 
+    const query = this.articleRepository
+      .createQueryBuilder('article')
+      .select('MAX(article.sequence)', 'maxSequence')
+      .where('article.group = :group', { group: article.group });
+
+    const result = await query.getRawOne();
+
+    article.sequence = result.maxSequence + 1;
+
     return this.articleRepository.save(article);
   }
 
@@ -40,5 +49,40 @@ export class ArticleService extends TypeOrmQueryService<Article> {
     await this.articleRepository.save(article);
 
     return article;
+  }
+
+  async changeSequence(
+    id: number,
+    group: string,
+    direction: string,
+  ): Promise<Article> {
+    const articleOne = await this.articleRepository.findOne({
+      where: { id, group },
+    });
+
+    const articleTwo = await this.articleRepository.findOne({
+      where: {
+        group,
+        sequence:
+          direction === 'up'
+            ? articleOne.sequence - 1
+            : articleOne.sequence + 1,
+      },
+    });
+
+    const articleOneSequence = articleOne.sequence;
+    const articleTwoSequence = articleTwo.sequence;
+
+    if (!articleOne || !articleTwo) {
+      return articleOne;
+    }
+
+    articleOne.sequence = articleTwoSequence;
+    const newArtickel = await this.articleRepository.save(articleOne);
+
+    articleTwo.sequence = articleOneSequence;
+    await this.articleRepository.save(articleTwo);
+
+    return newArtickel;
   }
 }

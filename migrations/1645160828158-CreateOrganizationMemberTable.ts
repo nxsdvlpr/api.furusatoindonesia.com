@@ -5,13 +5,13 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class CreateOrganizationPeopleTable1645160828158
+export class CreateOrganizationMemberTable1645160828158
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'organization_people',
+        name: 'organization_member',
         columns: [
           {
             name: 'id',
@@ -43,6 +43,11 @@ export class CreateOrganizationPeopleTable1645160828158
             type: 'varchar',
           },
           {
+            name: 'profession_jp',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'image',
             type: 'varchar',
             isNullable: true,
@@ -56,7 +61,7 @@ export class CreateOrganizationPeopleTable1645160828158
       true,
     );
 
-    await queryRunner.createForeignKeys('organization_people', [
+    await queryRunner.createForeignKeys('organization_member', [
       new TableForeignKey({
         columnNames: ['organization_structure_id'],
         referencedTableName: 'organization_structure',
@@ -67,17 +72,17 @@ export class CreateOrganizationPeopleTable1645160828158
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('organization_people');
+    const table = await queryRunner.getTable('organization_member');
 
     const foreignKey = table.foreignKeys.find(
       (fk) => fk.columnNames.indexOf('organization_structure_id') !== -1,
     );
-    await queryRunner.dropForeignKey('organization_people', foreignKey);
+    await queryRunner.dropForeignKey('organization_member', foreignKey);
     await queryRunner.dropColumn(
-      'organization_people',
+      'organization_member',
       'organization_structure_id',
     );
 
-    await queryRunner.dropTable('organization_people');
+    await queryRunner.dropTable('organization_member');
   }
 }
