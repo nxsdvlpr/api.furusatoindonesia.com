@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, ID, Mutation, Resolver } from '@nestjs/graphql';
 
 import { CreateOrganizationMemberInput } from './dto/create-organization-member.input';
 import { OrganizationMemberDto } from './dto/organization-member.dto';
@@ -23,5 +23,19 @@ export class OrganizationMemberResolver {
     @Args('input') input: UpdateOrganizationMemberInput,
   ): Promise<OrganizationMemberDto> {
     return this.organizationMemberService.update(input);
+  }
+
+  @Mutation(() => OrganizationMemberDto)
+  async changeSequenceOrganizationMember(
+    @Args('id', { type: () => ID }) id: number,
+    @Args('organizationStructureId', { type: () => ID })
+    organizationStructureId: number,
+    @Args('direction') direction: string,
+  ): Promise<OrganizationMemberDto> {
+    return this.organizationMemberService.changeSequence(
+      id,
+      organizationStructureId,
+      direction,
+    );
   }
 }

@@ -23,6 +23,8 @@ import { OrganizationStructureModule } from './organization-structure/organizati
 import { OrganizationStructureSeeder } from './organization-structure/organization-structure.seeder';
 import { OrganizationMemberSeeder } from './organization-member/organization-member.seeder';
 import { OrganizationMemberModule } from './organization-member/organization-member.module';
+import { TestimonyModule } from './testimony/testimony.module';
+import { TestimonySeeder } from './testimony/testimony.seeder';
 
 seeder({
   imports: [
@@ -54,6 +56,7 @@ seeder({
     ResourceModule,
     OrganizationStructureModule,
     OrganizationMemberModule,
+    TestimonyModule,
   ],
 }).run([
   OptionSeeder,
@@ -64,4 +67,5 @@ seeder({
   ResourceSeeder,
   OrganizationStructureSeeder,
   OrganizationMemberSeeder,
+  TestimonySeeder,
 ]);

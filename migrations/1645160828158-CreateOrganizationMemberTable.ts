@@ -55,6 +55,7 @@ export class CreateOrganizationMemberTable1645160828158
           {
             name: 'sequence',
             type: 'int',
+            default: 0,
           },
         ],
       }),

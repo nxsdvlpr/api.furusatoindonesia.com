@@ -9,13 +9,22 @@ export class ArticleInput {
   @Field()
   group: string;
 
-  @Field()
-  subject: string;
+  @Field({ nullable: true })
+  slug: string;
 
   @Field({ nullable: true })
-  subjectJp: string;
+  title: string;
 
-  @Field()
+  @Field({ nullable: true })
+  titleJp: string;
+
+  @Field({ nullable: true })
+  subtitle: string;
+
+  @Field({ nullable: true })
+  subtitleJp: string;
+
+  @Field({ nullable: true })
   excerpt: string;
 
   @Field({ nullable: true })
@@ -29,6 +38,9 @@ export class ArticleInput {
 
   @Field({ nullable: true })
   image: string;
+
+  @Field({ nullable: true })
+  icon: string;
 
   @Field()
   sequence: number;

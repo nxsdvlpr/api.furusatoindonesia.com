@@ -20,13 +20,22 @@ export class ArticleDto {
   @FilterableField()
   group: string;
 
-  @FilterableField()
-  subject: string;
+  @FilterableField({ nullable: true })
+  slug: string;
 
   @FilterableField({ nullable: true })
-  subjectJp: string;
+  title: string;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
+  titleJp: string;
+
+  @FilterableField({ nullable: true })
+  subtitle: string;
+
+  @FilterableField({ nullable: true })
+  subtitleJp: string;
+
+  @FilterableField({ nullable: true })
   excerpt: string;
 
   @FilterableField({ nullable: true })
@@ -40,6 +49,9 @@ export class ArticleDto {
 
   @FilterableField({ nullable: true })
   image: string;
+
+  @FilterableField({ nullable: true })
+  icon: string;
 
   @FilterableField()
   sequence: number;
