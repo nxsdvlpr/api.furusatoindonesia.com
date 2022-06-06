@@ -8,13 +8,22 @@ export class Article {
   @Column()
   group: string;
 
-  @Column()
-  subject: string;
+  @Column({ nullable: true })
+  slug: string;
 
   @Column({ nullable: true })
-  subjectJp: string;
+  title: string;
 
-  @Column()
+  @Column({ nullable: true })
+  titleJp: string;
+
+  @Column({ nullable: true })
+  subtitle: string;
+
+  @Column({ nullable: true })
+  subtitleJp: string;
+
+  @Column({ nullable: true })
   excerpt: string;
 
   @Column({ nullable: true })
@@ -28,6 +37,9 @@ export class Article {
 
   @Column({ nullable: true })
   image: string;
+
+  @Column({ nullable: true })
+  icon: string;
 
   @Column()
   sequence: number;

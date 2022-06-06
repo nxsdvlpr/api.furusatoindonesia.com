@@ -18,17 +18,34 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'subject',
+            name: 'slug',
             type: 'varchar',
+            isNullable: true,
           },
           {
-            name: 'subject_jp',
+            name: 'title',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'title_jp',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'subtitle',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'subtitle_jp',
             type: 'varchar',
             isNullable: true,
           },
           {
             name: 'excerpt',
             type: 'text',
+            isNullable: true,
           },
           {
             name: 'excerpt_jp',
@@ -63,6 +80,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
           {
             name: 'sequence',
             type: 'int',
+            default: 0,
           },
         ],
       }),

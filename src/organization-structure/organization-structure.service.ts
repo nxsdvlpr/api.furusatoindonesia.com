@@ -26,6 +26,14 @@ export class OrganizationStructureService extends TypeOrmQueryService<Organizati
       input,
     );
 
+    const query = this.organizationStructureRepository
+      .createQueryBuilder('organizationStructure')
+      .select('MAX(organizationStructure.sequence)', 'maxSequence');
+
+    const result = await query.getRawOne();
+
+    organizationStructure.sequence = result.maxSequence + 1;
+
     return this.organizationStructureRepository.save(organizationStructure);
   }
 
@@ -45,5 +53,38 @@ export class OrganizationStructureService extends TypeOrmQueryService<Organizati
     await this.organizationStructureRepository.save(organizationStructure);
 
     return organizationStructure;
+  }
+
+  async changeSequence(
+    id: number,
+    direction: string,
+  ): Promise<OrganizationStructure> {
+    const organizationOne = await this.organizationStructureRepository.findOne(
+      id,
+    );
+
+    const organizationTwo = await this.organizationStructureRepository.findOne({
+      sequence:
+        direction === 'up'
+          ? organizationOne.sequence - 1
+          : organizationOne.sequence + 1,
+    });
+
+    const organizationOneSequence = organizationOne.sequence;
+    const organizationTwoSequence = organizationTwo.sequence;
+
+    if (!organizationOne || !organizationTwo) {
+      return organizationOne;
+    }
+
+    organizationOne.sequence = organizationTwoSequence;
+    const newOrganization = await this.organizationStructureRepository.save(
+      organizationOne,
+    );
+
+    organizationTwo.sequence = organizationOneSequence;
+    await this.organizationStructureRepository.save(organizationTwo);
+
+    return newOrganization;
   }
 }
