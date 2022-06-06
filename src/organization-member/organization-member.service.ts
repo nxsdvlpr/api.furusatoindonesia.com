@@ -23,6 +23,17 @@ export class OrganizationMemberService extends TypeOrmQueryService<OrganizationM
   ): Promise<OrganizationMember> {
     const organizationMember = Object.assign(new OrganizationMember(), input);
 
+    const query = this.organizationMemberRepository
+      .createQueryBuilder('organizationMember')
+      .select('MAX(organizationMember.sequence)', 'maxSequence')
+      .where('organizationMember.organizationStructureId = :organizationId', {
+        organizationId: organizationMember.organizationStructureId,
+      });
+
+    const result = await query.getRawOne();
+
+    organizationMember.sequence = result.maxSequence + 1;
+
     return this.organizationMemberRepository.save(organizationMember);
   }
 
@@ -43,5 +54,41 @@ export class OrganizationMemberService extends TypeOrmQueryService<OrganizationM
     await this.organizationMemberRepository.save(organizationMember);
 
     return organizationMember;
+  }
+
+  async changeSequence(
+    id: number,
+    organizationStructureId: number,
+    direction: string,
+  ): Promise<OrganizationMember> {
+    const memberOne = await this.organizationMemberRepository.findOne({
+      where: {
+        id,
+        organizationStructureId,
+      },
+    });
+
+    const memberTwo = await this.organizationMemberRepository.findOne({
+      where: {
+        organizationStructureId,
+        sequence:
+          direction === 'up' ? memberOne.sequence - 1 : memberOne.sequence + 1,
+      },
+    });
+
+    const memberOneSequence = memberOne.sequence;
+    const memberTwoSequence = memberTwo.sequence;
+
+    if (!memberOne || !memberTwo) {
+      return memberOne;
+    }
+
+    memberOne.sequence = memberTwoSequence;
+    const newMember = await this.organizationMemberRepository.save(memberOne);
+
+    memberTwo.sequence = memberOneSequence;
+    await this.organizationMemberRepository.save(memberTwo);
+
+    return newMember;
   }
 }

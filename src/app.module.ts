@@ -20,6 +20,7 @@ import { ResourceModule } from './resource/resource.module';
 import { ArticleModule } from './article/article.module';
 import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
 import { OrganizationMemberModule } from './organization-member/organization-member.module';
+import { TestimonyModule } from './testimony/testimony.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { OrganizationMemberModule } from './organization-member/organization-mem
     ResourceModule,
     OrganizationStructureModule,
     OrganizationMemberModule,
+    TestimonyModule,
   ],
   providers: [
     {
