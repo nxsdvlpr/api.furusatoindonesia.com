@@ -53,6 +53,12 @@ export class ArticleDto {
   @FilterableField({ nullable: true })
   icon: string;
 
+  @FilterableField({ nullable: true })
+  counter: number;
+
+  @FilterableField()
+  published: boolean;
+
   @FilterableField()
   sequence: number;
 }

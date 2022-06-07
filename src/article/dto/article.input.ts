@@ -10,38 +10,44 @@ export class ArticleInput {
   group: string;
 
   @Field({ nullable: true })
-  slug: string;
+  slug?: string;
 
   @Field({ nullable: true })
-  title: string;
+  title?: string;
 
   @Field({ nullable: true })
-  titleJp: string;
+  titleJp?: string;
 
   @Field({ nullable: true })
-  subtitle: string;
+  subtitle?: string;
 
   @Field({ nullable: true })
-  subtitleJp: string;
+  subtitleJp?: string;
 
   @Field({ nullable: true })
-  excerpt: string;
+  excerpt?: string;
 
   @Field({ nullable: true })
-  excerptJp: string;
+  excerptJp?: string;
 
   @Field({ nullable: true })
-  body: string;
+  body?: string;
 
   @Field({ nullable: true })
-  bodyJp: string;
+  bodyJp?: string;
 
   @Field({ nullable: true })
-  image: string;
+  image?: string;
 
   @Field({ nullable: true })
-  icon: string;
+  icon?: string;
 
-  @Field()
-  sequence: number;
+  @Field({ nullable: true })
+  counter?: number;
+
+  @Field({ nullable: true })
+  published?: boolean;
+
+  @Field({ nullable: true })
+  sequence?: number;
 }
