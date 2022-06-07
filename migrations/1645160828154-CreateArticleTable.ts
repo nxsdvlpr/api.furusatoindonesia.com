@@ -73,6 +73,11 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'counter',
+            type: 'int',
+            isNullable: true,
+          },
+          {
             name: 'published',
             type: 'boolean',
             default: true,

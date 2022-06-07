@@ -41,6 +41,12 @@ export class Article {
   @Column({ nullable: true })
   icon: string;
 
+  @Column({ nullable: true })
+  counter: number;
+
+  @Column()
+  published: boolean;
+
   @Column()
   sequence: number;
 }
