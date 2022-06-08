@@ -15,20 +15,26 @@ export class CloudinaryService {
   }
 
   async upload(
+    path: string,
     file: Express.Multer.File,
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
-      const upload = this.cloudinary.uploader.upload_stream((result, error) => {
-        if (error) {
-          return reject(error);
-        }
+      const upload = this.cloudinary.v2.uploader.upload_stream(
+        {
+          folder: process.env.APP_NAME + '/' + path,
+        },
+        (error, result) => {
+          if (error) {
+            return reject(error);
+          }
 
-        resolve(
-          assign(result, {
-            url: result.secure_url,
-          }),
-        );
-      });
+          resolve(
+            assign(result, {
+              url: result.secure_url,
+            }),
+          );
+        },
+      );
       toStream(file.buffer).pipe(upload);
     });
   }
