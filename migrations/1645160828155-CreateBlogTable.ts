@@ -41,12 +41,32 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'subject_jp',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'excerpt',
             type: 'text',
           },
           {
+            name: 'excerpt_jp',
+            type: 'text',
+            isNullable: true,
+          },
+          {
             name: 'body',
             type: 'text',
+          },
+          {
+            name: 'body_jp',
+            type: 'text',
+            isNullable: true,
+          },
+          {
+            name: 'image',
+            type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'published',

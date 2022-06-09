@@ -32,12 +32,27 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'subject_jp',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'excerpt',
             type: 'text',
           },
           {
+            name: 'excerpt_jp',
+            type: 'text',
+            isNullable: true,
+          },
+          {
             name: 'body',
             type: 'text',
+          },
+          {
+            name: 'body_jp',
+            type: 'text',
+            isNullable: true,
           },
           {
             name: 'published',
