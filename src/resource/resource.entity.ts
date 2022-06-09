@@ -23,11 +23,20 @@ export class Resource {
   @Column()
   subject: string;
 
+  @Column({ nullable: true })
+  subjectJp: string;
+
   @Column()
   excerpt: string;
 
+  @Column({ nullable: true })
+  excerptJp: string;
+
   @Column()
   body: string;
+
+  @Column({ nullable: true })
+  bodyJp: string;
 
   @Column()
   published: boolean;
