@@ -53,6 +53,6 @@ export class BlogDto {
   @FilterableField()
   published: boolean;
 
-  @Field(() => GraphQLISODateTime)
+  @FilterableField(() => GraphQLISODateTime)
   publishedAt: Date;
 }

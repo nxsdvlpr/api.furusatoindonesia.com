@@ -18,6 +18,6 @@ export class OrganizationStructureInput {
   @Field({ nullable: true })
   descriptionJp: string;
 
-  @Field()
-  sequence: number;
+  @Field({ nullable: true })
+  sequence?: number;
 }

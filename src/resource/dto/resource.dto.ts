@@ -41,6 +41,6 @@ export class ResourceDto {
   @FilterableField()
   published: boolean;
 
-  @Field(() => GraphQLISODateTime)
+  @FilterableField(() => GraphQLISODateTime)
   publishedAt: Date;
 }

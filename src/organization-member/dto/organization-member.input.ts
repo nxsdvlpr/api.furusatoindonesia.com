@@ -21,6 +21,6 @@ export class OrganizationMemberInput {
   @Field({ nullable: true })
   image: string;
 
-  @Field()
-  sequence: number;
+  @Field({ nullable: true })
+  sequence?: number;
 }
