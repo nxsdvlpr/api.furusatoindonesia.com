@@ -55,6 +55,7 @@ import { TestimonyModule } from './testimony/testimony.module';
     CommonModule,
     MailModule,
     CloudinaryModule,
+    CloudinaryModule,
     OptionModule,
     AuthModule,
     RoleModule,
