@@ -38,6 +38,15 @@ export class Resource {
   @Column({ nullable: true })
   bodyJp: string;
 
+  @Column({ nullable: true })
+  image: string;
+
+  @Column({ nullable: true })
+  file: string;
+
+  @Column({ nullable: true })
+  videoUrl: string;
+
   @Column()
   published: boolean;
 

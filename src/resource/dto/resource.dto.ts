@@ -38,6 +38,15 @@ export class ResourceDto {
   @FilterableField({ nullable: true })
   bodyJp: string;
 
+  @FilterableField({ nullable: true })
+  image: string;
+
+  @FilterableField({ nullable: true })
+  file: string;
+
+  @FilterableField({ nullable: true })
+  videoUrl: string;
+
   @FilterableField()
   published: boolean;
 
