@@ -11,6 +11,7 @@ import { ArticleService } from './article.service';
 import { ArticleResolver } from './article.resolver';
 import { CreateArticleInput } from './dto/create-article.input';
 import { UpdateArticleInput } from './dto/update-article.input';
+import { ArticleController } from './article.controller';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UpdateArticleInput } from './dto/update-article.input';
     }),
     TypeOrmModule.forFeature([Article]),
   ],
+  controllers: [ArticleController],
   providers: [ArticleResolver, ArticleSeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })

@@ -1,8 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Cloudinary } from './cloudinary.provider';
 import toStream = require('buffer-to-stream');
 import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { assign } from 'lodash';
+
+import { Cloudinary } from './cloudinary.provider';
 
 @Injectable()
 export class CloudinaryService {

@@ -55,6 +55,21 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'image',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'file',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'video_url',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'published',
             type: 'boolean',
             default: true,
