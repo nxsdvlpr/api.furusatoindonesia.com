@@ -21,6 +21,8 @@ import { ArticleModule } from './article/article.module';
 import { OrganizationStructureModule } from './organization-structure/organization-structure.module';
 import { OrganizationMemberModule } from './organization-member/organization-member.module';
 import { TestimonyModule } from './testimony/testimony.module';
+import { MessageModule } from './message/message.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -55,7 +57,7 @@ import { TestimonyModule } from './testimony/testimony.module';
     CommonModule,
     MailModule,
     CloudinaryModule,
-    CloudinaryModule,
+    UploadModule,
     OptionModule,
     AuthModule,
     RoleModule,
@@ -66,6 +68,7 @@ import { TestimonyModule } from './testimony/testimony.module';
     OrganizationStructureModule,
     OrganizationMemberModule,
     TestimonyModule,
+    MessageModule,
   ],
   providers: [
     {

@@ -27,6 +27,15 @@ export class ResourceInput {
   @Field({ nullable: true })
   bodyJp: string;
 
+  @Field({ nullable: true })
+  image: string;
+
+  @Field({ nullable: true })
+  file: string;
+
+  @Field({ nullable: true })
+  videoUrl: string;
+
   @Field()
   published: boolean;
 

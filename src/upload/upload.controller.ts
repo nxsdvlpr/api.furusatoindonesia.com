@@ -9,12 +9,11 @@ import {
 import { Response } from 'express';
 
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Public } from 'src/auth/decorators/public.decorator';
-import { CloudinaryService } from './cloudinary.service';
+import { UploadService } from './upload.service';
 
 @Controller('/api/upload/:path(*)')
-export class CloudinaryController {
-  constructor(private readonly cloudinaryService: CloudinaryService) {}
+export class UploadController {
+  constructor(private readonly uploadService: UploadService) {}
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
@@ -23,8 +22,7 @@ export class CloudinaryController {
     @Res() res: Response,
     @UploadedFile() file: Express.Multer.File,
   ): Promise<any> {
-    console.log(path);
-    const result = await this.cloudinaryService.upload(path, file);
+    const result = await this.uploadService.upload(path, file);
     return res.json(result);
   }
 }
