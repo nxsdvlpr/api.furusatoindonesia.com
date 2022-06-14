@@ -11,6 +11,7 @@ import { BlogService } from './blog.service';
 import { BlogResolver } from './blog.resolver';
 import { CreateBlogInput } from './dto/create-blog.input';
 import { UpdateBlogInput } from './dto/update-blog.input';
+import { BlogController } from './blog.controller';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UpdateBlogInput } from './dto/update-blog.input';
     }),
     TypeOrmModule.forFeature([Blog]),
   ],
+  controllers: [BlogController],
   providers: [BlogResolver, BlogSeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })

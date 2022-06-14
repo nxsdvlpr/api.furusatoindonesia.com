@@ -47,6 +47,19 @@ export class ResourceService extends TypeOrmQueryService<Resource> {
     return exists.length > 0 ? true : false;
   }
 
+  async list(): Promise<Resource[]> {
+    return this.resourceRepository.find({
+      where: { published: true },
+      order: { publishedAt: 'DESC' },
+    });
+  }
+
+  async getBySlug(slug: string): Promise<Resource> {
+    return this.resourceRepository.findOne({
+      slug,
+    });
+  }
+
   private async slugify(title: string): Promise<string> {
     const slug = this.commonService.slugify(title);
     const exists = await this.resourceRepository.find({
