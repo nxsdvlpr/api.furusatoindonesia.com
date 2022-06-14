@@ -11,6 +11,7 @@ import { ResourceService } from './resource.service';
 import { ResourceResolver } from './resource.resolver';
 import { CreateResourceInput } from './dto/create-resource.input';
 import { UpdateResourceInput } from './dto/update-resource.input';
+import { ResourceController } from './resource.controller';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UpdateResourceInput } from './dto/update-resource.input';
     }),
     TypeOrmModule.forFeature([Resource]),
   ],
+  controllers: [ResourceController],
   providers: [ResourceResolver, ResourceSeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })

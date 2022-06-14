@@ -9,11 +9,11 @@ export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
   @Get('/:group([a-z-]+)')
-  async projects(
+  async list(
     @Param('group') group: string,
     @Res() res: Response,
   ): Promise<any> {
-    const result = await this.articleService.getArticlesByGroup(group);
+    const result = await this.articleService.listByGroup(group);
     return res.json({
       status: true,
       data: result,
@@ -21,8 +21,8 @@ export class ArticleController {
   }
 
   @Get('/:id([0-9]+)')
-  async article(@Param('id') id: number, @Res() res: Response): Promise<any> {
-    const result = await this.articleService.getArticleById(id);
+  async get(@Param('id') id: number, @Res() res: Response): Promise<any> {
+    const result = await this.articleService.getById(id);
     return res.json({
       status: true,
       data: result,
