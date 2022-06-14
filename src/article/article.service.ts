@@ -86,14 +86,14 @@ export class ArticleService extends TypeOrmQueryService<Article> {
     return newArtickel;
   }
 
-  async getArticlesByGroup(group: string): Promise<Article[]> {
+  async listByGroup(group: string): Promise<Article[]> {
     return this.articleRepository.find({
       where: { group, published: true },
       order: { sequence: 'ASC' },
     });
   }
 
-  async getArticleById(id: number): Promise<Article> {
+  async getById(id: number): Promise<Article> {
     return this.articleRepository.findOne({
       id,
     });

@@ -48,6 +48,22 @@ export class BlogService extends TypeOrmQueryService<Blog> {
     return exists.length > 0 ? true : false;
   }
 
+  async list(): Promise<Blog[]> {
+    return this.blogRepository
+      .createQueryBuilder('blog')
+      .leftJoinAndSelect('blog.user', 'user')
+      .select(['blog', 'user.id', 'user.name'])
+      .where('blog.published = :published', { published: true })
+      .orderBy('blog.publishedAt', 'DESC')
+      .getMany();
+  }
+
+  async getBySlug(slug: string): Promise<Blog> {
+    return this.blogRepository.findOne({
+      slug,
+    });
+  }
+
   private async slugify(title: string): Promise<string> {
     const slug = this.commonService.slugify(title);
     const exists = await this.blogRepository.find({
