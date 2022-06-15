@@ -24,19 +24,19 @@ export class Resource {
   subject: string;
 
   @Column({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @Column()
   excerpt: string;
 
   @Column({ nullable: true })
-  excerptJp: string;
+  excerptJa: string;
 
   @Column()
   body: string;
 
   @Column({ nullable: true })
-  bodyJp: string;
+  bodyJa: string;
 
   @Column({ nullable: true })
   image: string;

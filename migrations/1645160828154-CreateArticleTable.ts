@@ -28,7 +28,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'title_jp',
+            name: 'title_ja',
             type: 'varchar',
             isNullable: true,
           },
@@ -38,7 +38,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'subtitle_jp',
+            name: 'subtitle_ja',
             type: 'varchar',
             isNullable: true,
           },
@@ -48,7 +48,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'excerpt_jp',
+            name: 'excerpt_ja',
             type: 'text',
             isNullable: true,
           },
@@ -58,7 +58,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'body_jp',
+            name: 'body_ja',
             type: 'text',
             isNullable: true,
           },

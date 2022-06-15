@@ -16,25 +16,25 @@ export class ArticleInput {
   title?: string;
 
   @Field({ nullable: true })
-  titleJp?: string;
+  titleJa?: string;
 
   @Field({ nullable: true })
   subtitle?: string;
 
   @Field({ nullable: true })
-  subtitleJp?: string;
+  subtitleJa?: string;
 
   @Field({ nullable: true })
   excerpt?: string;
 
   @Field({ nullable: true })
-  excerptJp?: string;
+  excerptJa?: string;
 
   @Field({ nullable: true })
   body?: string;
 
   @Field({ nullable: true })
-  bodyJp?: string;
+  bodyJa?: string;
 
   @Field({ nullable: true })
   image?: string;

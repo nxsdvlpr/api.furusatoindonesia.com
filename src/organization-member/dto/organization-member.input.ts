@@ -16,7 +16,7 @@ export class OrganizationMemberInput {
   profession: string;
 
   @Field({ nullable: true })
-  professionJp: string;
+  professionJa: string;
 
   @Field({ nullable: true })
   image: string;

@@ -26,13 +26,13 @@ export class OrganizationStructureDto {
   subject: string;
 
   @FilterableField({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @FilterableField()
   description: string;
 
   @FilterableField({ nullable: true })
-  descriptionJp: string;
+  descriptionJa: string;
 
   @FilterableField()
   sequence: number;

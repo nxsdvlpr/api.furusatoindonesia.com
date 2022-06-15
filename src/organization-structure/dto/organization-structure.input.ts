@@ -10,13 +10,13 @@ export class OrganizationStructureInput {
   subject: string;
 
   @Field({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @Field()
   description: string;
 
   @Field({ nullable: true })
-  descriptionJp: string;
+  descriptionJa: string;
 
   @Field({ nullable: true })
   sequence?: number;

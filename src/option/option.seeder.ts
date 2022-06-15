@@ -16,20 +16,20 @@ export class OptionSeeder implements Seeder {
       {
         name: 'site_name',
         value: 'Furusato Indonesia',
-        valueJp: null,
+        valueJa: null,
         type: 'varchar',
       },
       {
         name: 'site_title',
         value: 'Encourage local communities',
-        valueJp: null,
+        valueJa: null,
         type: 'varchar',
       },
       {
         name: 'site_description',
         value:
           'We are here to participate in encouraging economic, social and cultural activities to strengthen competitiveness by optimizing the potential of local communities',
-        valueJp: null,
+        valueJa: null,
         type: 'text',
       },
     ];

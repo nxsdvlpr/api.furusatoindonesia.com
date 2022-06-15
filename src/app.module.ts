@@ -23,6 +23,7 @@ import { OrganizationMemberModule } from './organization-member/organization-mem
 import { TestimonyModule } from './testimony/testimony.module';
 import { MessageModule } from './message/message.module';
 import { UploadModule } from './upload/upload.module';
+import { TimelineModule } from './timeline/timeline.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { UploadModule } from './upload/upload.module';
     OrganizationMemberModule,
     TestimonyModule,
     MessageModule,
+    TimelineModule,
   ],
   providers: [
     {

@@ -6,6 +6,6 @@ export class UploadService {
   constructor(private readonly cloudinaryService: CloudinaryService) {}
 
   async upload(path: string, file: Express.Multer.File): Promise<any> {
-    return this.cloudinaryService.upload(path, file);
+    return this.cloudinaryService.uploadFromBuffer(path, file);
   }
 }
