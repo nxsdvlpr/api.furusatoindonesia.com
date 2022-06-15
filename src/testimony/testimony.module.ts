@@ -11,6 +11,7 @@ import { TestimonyService } from './testimony.service';
 import { TestimonyResolver } from './testimony.resolver';
 import { CreateTestimonyInput } from './dto/create-testimony.input';
 import { UpdateTestimonyInput } from './dto/update-testimony.input';
+import { TestimonyController } from './testimony.controller';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UpdateTestimonyInput } from './dto/update-testimony.input';
     }),
     TypeOrmModule.forFeature([Testimony]),
   ],
+  controllers: [TestimonyController],
   providers: [TestimonyResolver, TestimonySeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })

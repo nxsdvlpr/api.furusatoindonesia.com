@@ -26,6 +26,7 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
           {
             name: 'slug',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'subject',

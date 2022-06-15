@@ -35,6 +35,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
           {
             name: 'slug',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'subject',

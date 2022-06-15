@@ -38,4 +38,11 @@ export class TestimonyService extends TypeOrmQueryService<Testimony> {
 
     return testimony;
   }
+
+  async list(): Promise<Testimony[]> {
+    return this.testimonyRepository.find({
+      order: { createdAt: 'DESC' },
+      take: 10,
+    });
+  }
 }
