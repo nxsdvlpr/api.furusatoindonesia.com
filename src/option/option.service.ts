@@ -20,7 +20,7 @@ export class OptionService extends TypeOrmQueryService<Option> {
       const element = input.options[index];
       await this.optionRepository.update(
         { name: element.name },
-        { value: element.value, valueJp: element.valueJp },
+        { value: element.value, valueJa: element.valueJa },
       );
     }
 

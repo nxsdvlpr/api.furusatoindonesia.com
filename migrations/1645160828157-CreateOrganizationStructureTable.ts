@@ -30,7 +30,7 @@ export class CreateOrganizationStructureTable1645160828157
             type: 'varchar',
           },
           {
-            name: 'subject_jp',
+            name: 'subject_ja',
             type: 'varchar',
             isNullable: true,
           },
@@ -39,7 +39,7 @@ export class CreateOrganizationStructureTable1645160828157
             type: 'text',
           },
           {
-            name: 'description_jp',
+            name: 'description_ja',
             type: 'varchar',
             isNullable: true,
           },

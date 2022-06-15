@@ -32,8 +32,18 @@ export class CreateTestimonyTable1645160828159 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'profession_ja',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'message',
             type: 'text',
+          },
+          {
+            name: 'message_ja',
+            type: 'text',
+            isNullable: true,
           },
           {
             name: 'avatar',

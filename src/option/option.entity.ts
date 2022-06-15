@@ -12,7 +12,7 @@ export class Option {
   value: string;
 
   @Column({ nullable: true })
-  valueJp: string;
+  valueJa: string;
 
   @Column()
   type: string;

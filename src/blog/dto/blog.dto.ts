@@ -33,19 +33,19 @@ export class BlogDto {
   subject: string;
 
   @FilterableField({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @FilterableField()
   excerpt: string;
 
   @FilterableField({ nullable: true })
-  excerptJp: string;
+  excerptJa: string;
 
   @FilterableField()
   body: string;
 
   @FilterableField({ nullable: true })
-  bodyJp: string;
+  bodyJa: string;
 
   @FilterableField({ nullable: true })
   image: string;

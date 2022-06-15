@@ -12,8 +12,14 @@ export class TestimonyInput {
   @Field()
   profession: string;
 
+  @Field({ nullable: true })
+  professionJa: string;
+
   @Field()
   message: string;
+
+  @Field({ nullable: true })
+  messageJa: string;
 
   @Field({ nullable: true })
   avatar: string;

@@ -41,7 +41,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'subject_jp',
+            name: 'subject_ja',
             type: 'varchar',
             isNullable: true,
           },
@@ -50,7 +50,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             type: 'text',
           },
           {
-            name: 'excerpt_jp',
+            name: 'excerpt_ja',
             type: 'text',
             isNullable: true,
           },
@@ -59,7 +59,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             type: 'text',
           },
           {
-            name: 'body_jp',
+            name: 'body_ja',
             type: 'text',
             isNullable: true,
           },

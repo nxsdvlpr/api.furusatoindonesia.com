@@ -42,7 +42,7 @@ export class OrganizationMember {
   profession: string;
 
   @Column({ nullable: true })
-  professionJp: string;
+  professionJa: string;
 
   @Column({ nullable: true })
   image: string;
