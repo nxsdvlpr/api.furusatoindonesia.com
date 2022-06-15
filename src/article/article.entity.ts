@@ -15,25 +15,25 @@ export class Article {
   title: string;
 
   @Column({ nullable: true })
-  titleJp: string;
+  titleJa: string;
 
   @Column({ nullable: true })
   subtitle: string;
 
   @Column({ nullable: true })
-  subtitleJp: string;
+  subtitleJa: string;
 
   @Column({ nullable: true })
   excerpt: string;
 
   @Column({ nullable: true })
-  excerptJp: string;
+  excerptJa: string;
 
   @Column({ nullable: true })
   body: string;
 
   @Column({ nullable: true })
-  bodyJp: string;
+  bodyJa: string;
 
   @Column({ nullable: true })
   image: string;

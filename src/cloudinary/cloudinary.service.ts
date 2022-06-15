@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import toStream = require('buffer-to-stream');
+import * as toStream from 'buffer-to-stream';
 import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { assign } from 'lodash';
 
@@ -15,15 +15,42 @@ export class CloudinaryService {
     });
   }
 
-  async upload(
+  async uploadFromUrl(
     path: string,
-    file: Express.Multer.File,
+    url: string,
+    config: any = {},
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
+      assign(config, {
+        folder: process.env.APP_NAME + '/' + path,
+      });
+
+      this.cloudinary.v2.uploader.upload(url, config, (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+
+        return resolve(
+          assign(result, {
+            url: result.secure_url,
+          }),
+        );
+      });
+    });
+  }
+
+  async uploadFromBuffer(
+    path: string,
+    file: Express.Multer.File,
+    config: any = {},
+  ): Promise<UploadApiResponse | UploadApiErrorResponse> {
+    return new Promise((resolve, reject) => {
+      assign(config, {
+        folder: process.env.APP_NAME + '/' + path,
+      });
+
       const upload = this.cloudinary.v2.uploader.upload_stream(
-        {
-          folder: process.env.APP_NAME + '/' + path,
-        },
+        config,
         (error, result) => {
           if (error) {
             return reject(error);

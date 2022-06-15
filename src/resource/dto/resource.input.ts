@@ -13,19 +13,19 @@ export class ResourceInput {
   subject: string;
 
   @Field({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @Field()
   excerpt: string;
 
   @Field({ nullable: true })
-  excerptJp: string;
+  excerptJa: string;
 
   @Field()
   body: string;
 
   @Field({ nullable: true })
-  bodyJp: string;
+  bodyJa: string;
 
   @Field({ nullable: true })
   image: string;

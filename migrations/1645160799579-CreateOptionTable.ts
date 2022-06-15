@@ -22,7 +22,7 @@ export class CreateOptionTable1645160799579 implements MigrationInterface {
             type: 'text',
           },
           {
-            name: 'value_jp',
+            name: 'value_ja',
             type: 'text',
             isNullable: true,
           },

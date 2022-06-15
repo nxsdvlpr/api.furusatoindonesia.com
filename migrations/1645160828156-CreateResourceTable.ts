@@ -26,13 +26,14 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
           {
             name: 'slug',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'subject',
             type: 'varchar',
           },
           {
-            name: 'subject_jp',
+            name: 'subject_ja',
             type: 'varchar',
             isNullable: true,
           },
@@ -41,7 +42,7 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             type: 'text',
           },
           {
-            name: 'excerpt_jp',
+            name: 'excerpt_ja',
             type: 'text',
             isNullable: true,
           },
@@ -50,7 +51,7 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             type: 'text',
           },
           {
-            name: 'body_jp',
+            name: 'body_ja',
             type: 'text',
             isNullable: true,
           },

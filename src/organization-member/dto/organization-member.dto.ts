@@ -33,7 +33,7 @@ export class OrganizationMemberDto {
   profession: string;
 
   @FilterableField({ nullable: true })
-  professionJp: string;
+  professionJa: string;
 
   @FilterableField({ nullable: true })
   image: string;

@@ -43,7 +43,7 @@ export class CreateOrganizationMemberTable1645160828158
             type: 'varchar',
           },
           {
-            name: 'profession_jp',
+            name: 'profession_ja',
             type: 'varchar',
             isNullable: true,
           },

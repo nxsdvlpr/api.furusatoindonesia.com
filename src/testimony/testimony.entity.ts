@@ -23,8 +23,14 @@ export class Testimony {
   @Column()
   profession: string;
 
+  @Column({ nullable: true })
+  professionJa: string;
+
   @Column()
   message: string;
+
+  @Column({ nullable: true })
+  messageJa: string;
 
   @Column({ nullable: true })
   avatar: string;

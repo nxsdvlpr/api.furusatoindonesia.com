@@ -1,12 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateOrganizationStructureTable1645160828157
-  implements MigrationInterface
-{
+export class CreateTimelineTable1645160828161 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'organization_structure',
+        name: 'timeline',
         columns: [
           {
             name: 'id',
@@ -16,37 +14,31 @@ export class CreateOrganizationStructureTable1645160828157
             generationStrategy: 'increment',
           },
           {
-            name: 'created_at',
-            type: 'timestamptz',
+            name: 'taken_at',
+            type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
-            type: 'timestamptz',
-            default: 'now()',
+            name: 'media_id',
+            type: 'varchar',
+            isUnique: true,
           },
           {
-            name: 'subject',
+            name: 'media_code',
             type: 'varchar',
           },
           {
-            name: 'subject_ja',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'description',
+            name: 'caption',
             type: 'text',
           },
           {
-            name: 'description_ja',
-            type: 'varchar',
-            isNullable: true,
+            name: 'url',
+            type: 'jsonb',
           },
           {
-            name: 'sequence',
-            type: 'int',
-            default: 0,
+            name: 'tags',
+            type: 'jsonb',
+            isNullable: true,
           },
         ],
       }),
@@ -55,6 +47,6 @@ export class CreateOrganizationStructureTable1645160828157
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('organization_structure');
+    await queryRunner.dropTable('timeline');
   }
 }

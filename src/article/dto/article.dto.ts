@@ -27,25 +27,25 @@ export class ArticleDto {
   title: string;
 
   @FilterableField({ nullable: true })
-  titleJp: string;
+  titleJa: string;
 
   @FilterableField({ nullable: true })
   subtitle: string;
 
   @FilterableField({ nullable: true })
-  subtitleJp: string;
+  subtitleJa: string;
 
   @FilterableField({ nullable: true })
   excerpt: string;
 
   @FilterableField({ nullable: true })
-  excerptJp: string;
+  excerptJa: string;
 
   @FilterableField({ nullable: true })
   body: string;
 
   @FilterableField({ nullable: true })
-  bodyJp: string;
+  bodyJa: string;
 
   @FilterableField({ nullable: true })
   image: string;

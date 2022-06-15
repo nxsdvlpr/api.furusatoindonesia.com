@@ -23,8 +23,14 @@ export class TestimonyDto {
   @FilterableField()
   profession: string;
 
+  @FilterableField({ nullable: true })
+  professionJa: string;
+
   @FilterableField()
   message: string;
+
+  @FilterableField({ nullable: true })
+  messageJa: string;
 
   @FilterableField({ nullable: true })
   avatar: string;

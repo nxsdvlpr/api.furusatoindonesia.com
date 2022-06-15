@@ -29,13 +29,13 @@ export class OrganizationStructure {
   subject: string;
 
   @Column({ nullable: true })
-  subjectJp: string;
+  subjectJa: string;
 
   @Column()
   description: string;
 
   @Column({ nullable: true })
-  descriptionJp: string;
+  descriptionJa: string;
 
   @Column()
   sequence: number;
