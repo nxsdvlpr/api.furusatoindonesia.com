@@ -87,4 +87,16 @@ export class OrganizationStructureService extends TypeOrmQueryService<Organizati
 
     return newOrganization;
   }
+
+  async list(): Promise<OrganizationStructure[]> {
+    return this.organizationStructureRepository
+      .createQueryBuilder('organization')
+      .leftJoinAndSelect('organization.members', 'members')
+      .select(['organization', 'members'])
+      .orderBy({
+        'organization.sequence': 'ASC',
+        'members.sequence': 'ASC',
+      })
+      .getMany();
+  }
 }
