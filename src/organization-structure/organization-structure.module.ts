@@ -11,6 +11,7 @@ import { OrganizationStructureService } from './organization-structure.service';
 import { OrganizationStructureResolver } from './organization-structure.resolver';
 import { CreateOrganizationStructureInput } from './dto/create-organization-structure.input';
 import { UpdateOrganizationStructureInput } from './dto/update-organization-structure.input';
+import { OrganizationStructureController } from './organization-structure.controller';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UpdateOrganizationStructureInput } from './dto/update-organization-stru
     }),
     TypeOrmModule.forFeature([OrganizationStructure]),
   ],
+  controllers: [OrganizationStructureController],
   providers: [
     OrganizationStructureResolver,
     OrganizationStructureSeeder,
