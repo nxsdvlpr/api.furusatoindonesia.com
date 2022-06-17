@@ -5661,6 +5661,13 @@ neo-async@^2.6.0, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+nestjs-paginate@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/nestjs-paginate/-/nestjs-paginate-2.6.0.tgz#5560ee87212728b89258aa4a67c2408a1b046210"
+  integrity sha512-0ZL7vqnCQXyp3p7qj2+W+dbOiXuNTRBCnrJI14BY31FHKZWFbZnw+CAwVb9233hvIn/ZAufz+KYMgfoPh33Q5g==
+  dependencies:
+    lodash "^4.17.21"
+
 nestjs-seeder@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/nestjs-seeder/-/nestjs-seeder-0.2.0.tgz#13e6d3f1277696113c67bca8186b84ea293bde79"

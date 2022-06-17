@@ -4,6 +4,7 @@ import { assign } from 'lodash';
 import { Like, Repository } from 'typeorm';
 import { QueryService } from '@nestjs-query/core';
 import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
+import { PaginateQuery, paginate, Paginated } from 'nestjs-paginate';
 
 import { CommonService } from 'src/common/common.service';
 import { AuthenticatedUser } from 'src/auth/auth.interfaces';
@@ -48,14 +49,18 @@ export class BlogService extends TypeOrmQueryService<Blog> {
     return exists.length > 0 ? true : false;
   }
 
-  async list(): Promise<Blog[]> {
-    return this.blogRepository
+  async list(query: PaginateQuery): Promise<Paginated<Blog>> {
+    const queryBuilder = this.blogRepository
       .createQueryBuilder('blog')
       .leftJoinAndSelect('blog.user', 'user')
       .select(['blog', 'user.id', 'user.name'])
-      .where('blog.published = :published', { published: true })
-      .orderBy('blog.publishedAt', 'DESC')
-      .getMany();
+      .where('blog.published = :published', { published: true });
+
+    return paginate<Blog>(query, queryBuilder, {
+      sortableColumns: ['publishedAt'],
+      searchableColumns: ['subject', 'subjectJa'],
+      defaultSortBy: [['publishedAt', 'DESC']],
+    });
   }
 
   async getBySlug(slug: string): Promise<Blog> {

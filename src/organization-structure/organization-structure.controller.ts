@@ -1,4 +1,4 @@
-import { Controller, Res, Get, Param } from '@nestjs/common';
+import { Controller, Res, Get } from '@nestjs/common';
 import { Response } from 'express';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { OrganizationStructureService } from './organization-structure.service';
