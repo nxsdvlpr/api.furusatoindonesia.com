@@ -7,6 +7,7 @@ import { Timeline } from './timeline.entity';
 import { InstagramService } from 'src/instagram/instagram.service';
 import { assign } from 'lodash';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { paginate, Paginated, PaginateQuery } from 'nestjs-paginate';
 
 @QueryService(Timeline)
 export class TimelineService extends TypeOrmQueryService<Timeline> {
@@ -19,21 +20,25 @@ export class TimelineService extends TypeOrmQueryService<Timeline> {
     super(timelineRepository);
   }
 
-  async list(): Promise<Timeline[]> {
-    return this.timelineRepository
+  async list(query: PaginateQuery): Promise<Paginated<Timeline>> {
+    const queryBuilder = this.timelineRepository
       .createQueryBuilder('timeline')
       .where('timeline.tags ::jsonb ?& :tags', {
         tags: ['#TheEntrepreneur'],
-      })
-      .orderBy('timeline.takenAt', 'DESC')
-      .limit(30)
-      .getMany();
+      });
+
+    return paginate<Timeline>(query, queryBuilder, {
+      sortableColumns: ['takenAt'],
+      searchableColumns: ['caption', 'tags'],
+      defaultSortBy: [['takenAt', 'DESC']],
+    });
   }
 
-  async sync(): Promise<void> {
+  async sync(limit: number = null): Promise<void> {
     const instagramMedias = await this.instagramService.getFeeds();
+    const length = limit ?? instagramMedias.length;
 
-    for (let i = 0; i < instagramMedias.length; i++) {
+    for (let i = 0; i < length; i++) {
       const instagramMedia = instagramMedias[i];
       console.log(`checking media with id: ${instagramMedia.mediaId}`);
       const timeline = await this.timelineRepository.findOne({

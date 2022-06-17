@@ -13,7 +13,7 @@ export class TimelineSchedule {
     this.logger.log('syncTimeline');
 
     try {
-      await this.timelineService.sync();
+      await this.timelineService.sync(10);
     } catch (error) {
       this.logger.error(error);
     }
