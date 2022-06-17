@@ -37,21 +37,44 @@ export class Blog {
   @Column()
   slug: string;
 
-  @Factory((faker) => faker.random.words() + ' ' + faker.random.alphaNumeric(5))
+  @Factory((faker) => {
+    faker.locale = 'id_ID';
+    return faker.random
+      .words(8)
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word[0].toUpperCase() + word.substr(1))
+      .join(' ');
+  })
   @Column()
   subject: string;
 
+  @Factory((faker) => {
+    faker.locale = 'ja';
+    return faker.random
+      .words(8)
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word[0].toUpperCase() + word.substr(1))
+      .join(' ');
+  })
   @Column({ nullable: true })
   subjectJa: string;
 
-  @Factory((faker) => faker.lorem.sentence(10))
+  @Factory((faker) => {
+    faker.locale = 'id_ID';
+    return faker.lorem.paragraph();
+  })
   @Column()
   excerpt: string;
 
   @Column({ nullable: true })
   excerptJa: string;
 
-  @Factory((faker) => faker.lorem.sentence(25))
+  @Factory((faker) => {
+    faker.locale = 'id_ID';
+    return faker.lorem.paragraphs(5);
+  })
   @Column()
   body: string;
 

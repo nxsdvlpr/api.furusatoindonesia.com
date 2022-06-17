@@ -33,8 +33,9 @@ export class TimelineService extends TypeOrmQueryService<Timeline> {
   async sync(): Promise<void> {
     const instagramMedias = await this.instagramService.getFeeds();
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < instagramMedias.length; i++) {
       const instagramMedia = instagramMedias[i];
+      console.log(`checking media with id: ${instagramMedia.mediaId}`);
       const timeline = await this.timelineRepository.findOne({
         mediaId: instagramMedia.mediaId,
       });
