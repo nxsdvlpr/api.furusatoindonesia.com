@@ -1,5 +1,7 @@
 import { Controller, Res, Get, Param } from '@nestjs/common';
 import { Response } from 'express';
+import { assign } from 'lodash';
+import { Paginate, PaginateQuery } from 'nestjs-paginate';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { ResourceService } from './resource.service';
 
@@ -9,12 +11,12 @@ export class ResourceController {
   constructor(private readonly resourceService: ResourceService) {}
 
   @Get('/')
-  async list(@Res() res: Response): Promise<any> {
-    const result = await this.resourceService.list();
-    return res.json({
-      status: true,
-      data: result,
-    });
+  async list(
+    @Paginate() query: PaginateQuery,
+    @Res() res: Response,
+  ): Promise<any> {
+    const result = await this.resourceService.list(query);
+    return res.json(assign(result, { status: true }));
   }
 
   @Get('/:slug([a-zA-Z0-9-,.]+)')
