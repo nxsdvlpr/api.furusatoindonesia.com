@@ -8,10 +8,14 @@ export class TimelineSchedule {
 
   constructor(private readonly timelineService: TimelineService) {}
 
-  @Cron(CronExpression.EVERY_DAY_AT_1AM)
+  @Cron(CronExpression.EVERY_DAY_AT_4AM)
   async syncTimeline(): Promise<void> {
     this.logger.log('syncTimeline');
 
-    await this.timelineService.sync();
+    try {
+      await this.timelineService.sync();
+    } catch (error) {
+      this.logger.error(error);
+    }
   }
 }
