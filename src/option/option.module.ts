@@ -9,6 +9,7 @@ import { OptionDto } from './dto/option.dto';
 import { OptionSeeder } from './option.seeder';
 import { OptionService } from './option.service';
 import { OptionResolver } from './option.resolver';
+import { OptionController } from './option.controller';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { OptionResolver } from './option.resolver';
     }),
     TypeOrmModule.forFeature([Option]),
   ],
+  controllers: [OptionController],
   providers: [OptionResolver, OptionSeeder, CommonService],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })

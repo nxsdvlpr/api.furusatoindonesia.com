@@ -30,4 +30,11 @@ export class OptionService extends TypeOrmQueryService<Option> {
 
     return input;
   }
+
+  async list(): Promise<Option[]> {
+    return this.optionRepository
+      .createQueryBuilder('option')
+      .select(['option.name', 'option.value', 'option.valueJa'])
+      .getMany();
+  }
 }
