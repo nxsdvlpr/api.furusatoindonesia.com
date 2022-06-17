@@ -1,5 +1,7 @@
-import { Controller, Res, Get } from '@nestjs/common';
+import { Controller, Res, Get, Query } from '@nestjs/common';
 import { Response } from 'express';
+import { assign } from 'lodash';
+import { Paginate, PaginateQuery } from 'nestjs-paginate';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { TimelineService } from './timeline.service';
 
@@ -9,18 +11,19 @@ export class TimelineController {
   constructor(private readonly timelineService: TimelineService) {}
 
   @Get('/')
-  async getFeeds(@Res() res: Response): Promise<any> {
-    const result = await this.timelineService.list();
-    return res.json({
-      status: true,
-      data: result,
-    });
+  async list(
+    @Paginate() query: PaginateQuery,
+    @Res() res: Response,
+  ): Promise<any> {
+    const result = await this.timelineService.list(query);
+    return res.json(assign(result, { status: true }));
   }
 
   @Get('/sync')
-  async syncFeeds(@Res() res: Response): Promise<any> {
+  async syncFeeds(@Query() query, @Res() res: Response): Promise<any> {
     try {
-      this.timelineService.sync();
+      const limit = parseInt(query.limit) ?? null;
+      this.timelineService.sync(limit);
     } catch (error) {
       console.log(error);
     }
