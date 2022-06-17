@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Seeder } from 'nestjs-seeder';
+import { DataFactory, Seeder } from 'nestjs-seeder';
 import { Repository } from 'typeorm';
 import { Resource } from './resource.entity';
 
@@ -12,9 +12,8 @@ export class ResourceSeeder implements Seeder {
   ) {}
 
   async seed(): Promise<any> {
-    const resources = [];
-
-    await this.resourceRepository.save(resources);
+    const data = DataFactory.createForClass(Resource).generate(50);
+    await this.resourceRepository.save(data);
   }
 
   async drop(): Promise<any> {

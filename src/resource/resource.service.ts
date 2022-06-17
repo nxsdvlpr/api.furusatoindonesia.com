@@ -4,6 +4,7 @@ import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
 import { QueryService } from '@nestjs-query/core';
 import { Like, Repository } from 'typeorm';
 import { assign } from 'lodash';
+import { PaginateQuery, paginate, Paginated } from 'nestjs-paginate';
 
 import { CommonService } from 'src/common/common.service';
 import { Resource } from './resource.entity';
@@ -47,10 +48,15 @@ export class ResourceService extends TypeOrmQueryService<Resource> {
     return exists.length > 0 ? true : false;
   }
 
-  async list(): Promise<Resource[]> {
-    return this.resourceRepository.find({
-      where: { published: true },
-      order: { publishedAt: 'DESC' },
+  async list(query: PaginateQuery): Promise<Paginated<Resource>> {
+    const queryBuilder = this.resourceRepository
+      .createQueryBuilder('resource')
+      .where('resource.published = :published', { published: true });
+
+    return paginate<Resource>(query, queryBuilder, {
+      sortableColumns: ['publishedAt'],
+      searchableColumns: ['subject', 'subjectJa'],
+      defaultSortBy: [['publishedAt', 'DESC']],
     });
   }
 
