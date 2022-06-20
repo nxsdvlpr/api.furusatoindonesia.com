@@ -51,7 +51,8 @@ export class ResourceService extends TypeOrmQueryService<Resource> {
   async list(query: PaginateQuery): Promise<Paginated<Resource>> {
     const queryBuilder = this.resourceRepository
       .createQueryBuilder('resource')
-      .where('resource.published = :published', { published: true });
+      .where('resource.published = :published', { published: true })
+      .andWhere(`resource.publishedAt <= 'TODAY'::DATE`);
 
     return paginate<Resource>(query, queryBuilder, {
       sortableColumns: ['publishedAt'],

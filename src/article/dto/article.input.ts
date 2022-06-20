@@ -1,5 +1,6 @@
 import { IDField } from '@nestjs-query/query-graphql';
 import { Field, ID, InputType } from '@nestjs/graphql';
+import { IsUppercase } from 'class-validator';
 
 @InputType()
 export class ArticleInput {

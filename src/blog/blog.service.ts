@@ -54,7 +54,8 @@ export class BlogService extends TypeOrmQueryService<Blog> {
       .createQueryBuilder('blog')
       .leftJoinAndSelect('blog.user', 'user')
       .select(['blog', 'user.id', 'user.name'])
-      .where('blog.published = :published', { published: true });
+      .where('blog.published = :published', { published: true })
+      .andWhere(`blog.publishedAt <= 'TODAY'::DATE`);
 
     return paginate<Blog>(query, queryBuilder, {
       sortableColumns: ['publishedAt'],

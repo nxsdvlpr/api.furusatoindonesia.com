@@ -1,12 +1,24 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Response } from 'express';
+import { Public } from 'src/auth/decorators/public.decorator';
+import { CreateMessageInput } from './dto/create-message.input';
 import { MessageService } from './message.service';
 
-@Controller('/api/message')
+@Public()
+@Controller('/api/messages')
 export class MessageController {
   constructor(private readonly messageService: MessageService) {}
 
   @Post()
-  async sendMessage(): Promise<any> {
-    console.log('hehe');
+  async sendMessage(
+    @Body() data: CreateMessageInput,
+    @Res() res: Response,
+  ): Promise<any> {
+    console.log(data);
+
+    return res.json({
+      status: true,
+      data: data,
+    });
   }
 }
