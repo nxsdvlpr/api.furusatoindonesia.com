@@ -54,7 +54,11 @@ export class AuthService {
     const payload: JwtPayload = {
       username: loginUser.username,
       sub: loginUser.id,
-      role: loginUser.role,
+      role: {
+        id: loginUser.role.id,
+        name: loginUser.role.name,
+        shortname: loginUser.role.shortname,
+      },
     };
 
     return Promise.resolve({

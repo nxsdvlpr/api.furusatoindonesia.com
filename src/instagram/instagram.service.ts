@@ -3,6 +3,7 @@ import {
   IgApiClient,
   TagFeedResponseCarouselMediaItem,
   TagFeedResponseItemsItem,
+  UserFeedResponseItemsItem,
 } from 'instagram-private-api';
 
 @Injectable()
@@ -30,7 +31,7 @@ export class InstagramService {
     return this.handleFeeds(feeds);
   }
 
-  private handleFeeds(feeds: any) {
+  private handleFeeds(feeds: UserFeedResponseItemsItem[]) {
     const medias = [];
     const originaFeeds: TagFeedResponseItemsItem[] = feeds.filter(
       (item: TagFeedResponseItemsItem) =>
