@@ -1,4 +1,6 @@
+import { InjectQueue } from '@nestjs/bull';
 import { Controller, Res, Get, Query } from '@nestjs/common';
+import { Queue } from 'bull';
 import { Response } from 'express';
 import { assign } from 'lodash';
 import { Paginate, PaginateQuery } from 'nestjs-paginate';
@@ -8,7 +10,10 @@ import { TimelineService } from './timeline.service';
 @Public()
 @Controller('/api/timelines/')
 export class TimelineController {
-  constructor(private readonly timelineService: TimelineService) {}
+  constructor(
+    private readonly timelineService: TimelineService,
+    @InjectQueue('timeline-queue') private readonly timelineQueue: Queue,
+  ) {}
 
   @Get('/')
   async list(
@@ -21,12 +26,11 @@ export class TimelineController {
 
   @Get('/sync')
   async syncFeeds(@Query() query, @Res() res: Response): Promise<any> {
-    try {
-      const limit = parseInt(query.limit) ?? null;
-      this.timelineService.sync(limit);
-    } catch (error) {
-      console.log(error);
-    }
+    const limit = parseInt(query.limit) ?? null;
+
+    await this.timelineQueue.add('syncTimeline', {
+      limit: limit,
+    });
 
     return res.json({
       status: true,

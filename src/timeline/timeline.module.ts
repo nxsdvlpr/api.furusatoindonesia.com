@@ -11,9 +11,14 @@ import { InstagramService } from 'src/instagram/instagram.service';
 import { CommonService } from 'src/common/common.service';
 import { TimelineController } from './timeline.controller';
 import { TimelineSchedule } from './timeline.schedule';
+import { BullModule } from '@nestjs/bull';
+import { TimelineProcessor } from './timeline.processor';
 
 @Module({
   imports: [
+    BullModule.registerQueue({
+      name: 'timeline-queue',
+    }),
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([Timeline])],
       services: [TimelineService, InstagramService],
@@ -29,7 +34,12 @@ import { TimelineSchedule } from './timeline.schedule';
     TypeOrmModule.forFeature([Timeline]),
   ],
   controllers: [TimelineController],
-  providers: [TimelineSeeder, CommonService, TimelineSchedule],
+  providers: [
+    TimelineSeeder,
+    CommonService,
+    TimelineSchedule,
+    TimelineProcessor,
+  ],
   exports: [TypeOrmModule, NestjsQueryGraphQLModule],
 })
 export class TimelineModule {}
