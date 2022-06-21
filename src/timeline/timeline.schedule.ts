@@ -1,21 +1,20 @@
+import { InjectQueue } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { TimelineService } from './timeline.service';
+import { Queue } from 'bull';
 
 @Injectable()
 export class TimelineSchedule {
   private logger = new Logger(TimelineSchedule.name);
 
-  constructor(private readonly timelineService: TimelineService) {}
+  constructor(
+    @InjectQueue('timeline-queue') private readonly timelineQueue: Queue,
+  ) {}
 
   @Cron(CronExpression.EVERY_DAY_AT_4AM)
   async syncTimeline(): Promise<void> {
-    this.logger.log('syncTimeline');
-
-    try {
-      await this.timelineService.sync(10);
-    } catch (error) {
-      this.logger.error(error);
-    }
+    await this.timelineQueue.add('syncTimeline', {
+      limit: 10,
+    });
   }
 }
