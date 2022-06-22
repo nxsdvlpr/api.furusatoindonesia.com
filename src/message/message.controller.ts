@@ -14,11 +14,11 @@ export class MessageController {
     @Body() data: CreateMessageInput,
     @Res() res: Response,
   ): Promise<any> {
-    console.log(data);
+    const result = await this.messageService.create(data);
 
     return res.json({
       status: true,
-      data: data,
+      data: result,
     });
   }
 }
