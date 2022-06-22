@@ -11,7 +11,7 @@ export class MessageDto {
   @IDField(() => ID)
   id: number;
 
-  @Field(() => GraphQLISODateTime)
+  @FilterableField(() => GraphQLISODateTime)
   createdAt: Date;
 
   @FilterableField()

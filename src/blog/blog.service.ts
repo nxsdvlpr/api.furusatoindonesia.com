@@ -65,9 +65,18 @@ export class BlogService extends TypeOrmQueryService<Blog> {
   }
 
   async getBySlug(slug: string): Promise<Blog> {
-    return this.blogRepository.findOne({
-      slug,
-    });
+    const blog = await this.blogRepository
+      .createQueryBuilder('blog')
+      .leftJoinAndSelect('blog.user', 'user')
+      .select(['blog', 'user.id', 'user.name'])
+      .where('blog.slug = :slug', { slug })
+      .getOne();
+
+    if (!blog) {
+      throw new NotFoundException(`Unable to find Blog with slug ${slug}`);
+    }
+
+    return blog;
   }
 
   private async slugify(title: string): Promise<string> {
