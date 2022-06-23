@@ -25,6 +25,8 @@ import { OrganizationMemberSeeder } from './organization-member/organization-mem
 import { OrganizationMemberModule } from './organization-member/organization-member.module';
 import { TestimonyModule } from './testimony/testimony.module';
 import { TestimonySeeder } from './testimony/testimony.seeder';
+import { MessageSeeder } from './message/message.seeder';
+import { MessageModule } from './message/message.module';
 
 seeder({
   imports: [
@@ -57,15 +59,17 @@ seeder({
     OrganizationStructureModule,
     OrganizationMemberModule,
     TestimonyModule,
+    MessageModule,
   ],
 }).run([
-  OptionSeeder,
-  RoleSeeder,
-  UserSeeder,
-  ArticleSeeder,
+  // OptionSeeder,
+  // RoleSeeder,
+  // UserSeeder,
+  // ArticleSeeder,
   BlogSeeder,
   ResourceSeeder,
   OrganizationStructureSeeder,
   OrganizationMemberSeeder,
   TestimonySeeder,
+  MessageSeeder,
 ]);

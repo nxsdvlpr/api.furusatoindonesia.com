@@ -53,7 +53,7 @@ export class BlogService extends TypeOrmQueryService<Blog> {
     const queryBuilder = this.blogRepository
       .createQueryBuilder('blog')
       .leftJoinAndSelect('blog.user', 'user')
-      .select(['blog', 'user.id', 'user.name'])
+      .select(['blog', 'user.id', 'user.name', 'user.avatar'])
       .where('blog.published = :published', { published: true })
       .andWhere(`blog.publishedAt <= 'TODAY'::DATE`);
 
@@ -68,7 +68,7 @@ export class BlogService extends TypeOrmQueryService<Blog> {
     const blog = await this.blogRepository
       .createQueryBuilder('blog')
       .leftJoinAndSelect('blog.user', 'user')
-      .select(['blog', 'user.id', 'user.name'])
+      .select(['blog', 'user.id', 'user.name', 'user.avatar'])
       .where('blog.slug = :slug', { slug })
       .getOne();
 
