@@ -20,6 +20,7 @@ export class UserSeeder implements Seeder {
         password: bcrypt.hashSync(`admin@app.com`, 10),
         name: `Administrator`,
         phone: `081100000011`,
+        avatar: 'https://loremflickr.com/500/500?1000',
       },
       {
         roleId: 2,
@@ -27,6 +28,7 @@ export class UserSeeder implements Seeder {
         password: bcrypt.hashSync(`author@app.com`, 10),
         name: `Author`,
         phone: `081100000012`,
+        avatar: 'https://loremflickr.com/500/500?2000',
       },
     ]);
   }

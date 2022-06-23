@@ -50,6 +50,11 @@ export class CreateUserTable1645160828153 implements MigrationInterface {
             type: 'varchar',
             isNullable: true,
           },
+          {
+            name: 'avatar',
+            type: 'varchar',
+            isNullable: true,
+          },
         ],
       }),
       true,
