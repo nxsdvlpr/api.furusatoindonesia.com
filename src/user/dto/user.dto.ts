@@ -47,4 +47,7 @@ export class UserDto {
 
   @FilterableField({ nullable: true })
   phone: string;
+
+  @FilterableField({ nullable: true })
+  avatar: string;
 }
