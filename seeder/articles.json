@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "group": "page-title",
+    "title": "Furusato Indonesia mendorong komunitas lokal",
+    "body": "Kami hadir untuk turut serta mendorong kegiatan ekonomi, sosial dan budaya guna memperkuat daya saing dengan mengoptimalkan potensi masyarakat setempat",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 2,
+    "group": "page-title",
+    "title": "Keahlian",
+    "subtitle": "Sejajarkan praktik kompensasi dengan tujuan bisnis untuk membuat keputusan yang lebih baik tentang gaji karyawan.",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 3,
+    "group": "section-hero",
+    "title": "Memberikan yang terbaik untuk komunitas",
+    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis enim totam ut, ipsa temporibus corporis veniam maiores eum possimus dicta repellendus vel dolore itaque voluptas fuga incidunt, eos alias perferendis! ",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 4,
+    "group": "page-title",
+    "title": "Dampak Kami",
+    "subtitle": "Sejak 2015 telah mendukung masyarakat di seluruh Indonesia dalam memperluas peluang ekonomi mereka dan memajukan pengetahuan pertanian",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 5,
+    "group": "section-hero",
+    "title": "An inclusive economy",
+    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis enim totam ut, ipsa temporibus corporis veniam maiores eum possimus dicta repellendus vel dolore itaque voluptas fuga incidunt, eos alias perferendis! ",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 6,
+    "group": "section-hero",
+    "title": "Mari Berkolaborasi",
+    "body": "Kami berkolaborasi dan menjaga kerjasama dengan organisasi, instansi pemerintah dan sektor swasta untuk membawa dampak positif bagi masyarakat.",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 7,
+    "group": "page-title",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 8,
+    "group": "page-title",
+    "title": "Blog",
+    "subtitle": "Sejajarkan praktik kompensasi dengan tujuan bisnis untuk membuat keputusan yang lebih baik tentang gaji karyawan.",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 9,
+    "group": "page-title",
+    "title": "Timeline",
+    "subtitle": "Align compensation practices with business goals to make improved decisions on employee pay. ",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 10,
+    "group": "page-title",
+    "title": "Sumber daya",
+    "subtitle": "Sejajarkan praktik kompensasi dengan tujuan bisnis untuk membuat keputusan yang lebih baik tentang gaji karyawan.",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 11,
+    "group": "at-a-glance",
+    "title": "We’re making work meaningful for everyone, everywhere.",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 12,
+    "group": "project-statistic",
+    "title": "Pertanian organik dan pusat inovasi pertanian",
+    "published": true,
+    "sequence": 1,
+    "counter": 4
+  },
+  {
+    "id": 13,
+    "group": "project-statistic",
+    "title": "Siswa magang yang dialokasikan untuk",
+    "published": true,
+    "sequence": 2,
+    "counter": 2387
+  },
+  {
+    "id": 14,
+    "group": "project-statistic",
+    "title": "Memberdayakan siswa untuk program pasca magang",
+    "published": true,
+    "sequence": 3,
+    "counter": 231
+  },
+  {
+    "id": 15,
+    "group": "page-title",
+    "title": "Misi dan Visi",
+    "body": "",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 16,
+    "group": "at-a-glance",
+    "title": "Our people platform helps businesses take care of their hardworking teams.",
+    "body": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laudantium quas molestiae doloribus mollitia corrupti, beatae maxime placeat recusandae nulla, rem dolorem atque aut voluptate, corporis modi. Quae, reiciendis quia!\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Iusto laudantium quas molestiae doloribus mollitia corrupti! ",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 17,
+    "group": "at-a-glance",
+    "title": "Furusato Group",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 18,
+    "group": "at-a-glance",
+    "title": "Our Philosophy",
+    "body": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, mollitia eum vel molestiae deleniti iure rerum ullam dicta adipisci minima quasi distinctio cumque maiores quos blanditiis incidunt officia magnam corrupti.\n\nLorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 19,
+    "group": "page-title",
+    "title": "Dampak Nasional",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 20,
+    "group": "page-title",
+    "title": "Organisasi",
+    "subtitle": "Salah satu misi utama kami adalah membentuk tim kerja yang professional, kreatif dan handal. ",
+    "published": true,
+    "sequence": 0
+  },
+  {
+    "id": 21,
+    "group": "section-hero",
+    "title": "Kutipan Dari Presiden",
+    "body": "\n*Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis enim totam ut, ipsa temporibus corporis veniam maiores eum possimus dicta repellendus vel dolore itaque voluptas fuga incidunt, eos alias perferendis!*\n\n\"Lorem ipsum dolor sit amet consectetur adipisicing elit.\"\n\n - **Melissa Hoover** Executive Director",
+    "bodyJa": "",
+    "published": true,
+    "sequence": 0
+  }
+]

@@ -12,9 +12,13 @@ export class UpdateProfileInputDto {
   username!: string;
 
   @Field({ nullable: true })
-  password: string;
+  password?: string;
 
   @Field()
   @IsString()
   phone!: string;
+
+  @Field()
+  @IsString()
+  avatar?: string;
 }

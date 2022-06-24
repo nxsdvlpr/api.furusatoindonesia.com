@@ -16,12 +16,23 @@ export class RoleSeeder implements Seeder {
       {
         name: 'Admin',
         shortname: 'admin',
-        access: {},
+        access: {
+          home: true,
+          publication_blog: true,
+          publication_timeline: true,
+          resource: true,
+          setting_user_management: true,
+        },
       },
       {
         name: 'Author',
         shortname: 'author',
-        access: {},
+        access: {
+          home: true,
+          publication_blog: true,
+          publication_timeline: true,
+          resource: true,
+        },
       },
     ];
 
