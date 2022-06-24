@@ -63,6 +63,7 @@ export class CreateBlogTable1645160828155 implements MigrationInterface {
             name: 'body_ja',
             type: 'text',
             isNullable: true,
+            default: "''",
           },
           {
             name: 'image',

@@ -1,6 +1,13 @@
 import { IDField } from '@nestjs-query/query-graphql';
 import { Field, ID, InputType } from '@nestjs/graphql';
-import { IsEmail, IsMobilePhone, IsString, Length } from 'class-validator';
+import {
+  IsBoolean,
+  IsEmail,
+  IsMobilePhone,
+  IsOptional,
+  IsString,
+  Length,
+} from 'class-validator';
 
 @InputType()
 export class MessageInput {
@@ -23,4 +30,9 @@ export class MessageInput {
   @IsString()
   @Field()
   body: string;
+
+  @IsOptional()
+  @IsBoolean()
+  @Field()
+  alreadyRead?: boolean;
 }

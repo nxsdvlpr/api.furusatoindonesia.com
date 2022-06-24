@@ -54,6 +54,7 @@ export class CreateResourceTable1645160828156 implements MigrationInterface {
             name: 'body_ja',
             type: 'text',
             isNullable: true,
+            default: "''",
           },
           {
             name: 'image',
