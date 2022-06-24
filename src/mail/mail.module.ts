@@ -5,7 +5,7 @@ import { MailService } from './mail.service';
 import { join } from 'path';
 import { ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
-import { MailConsumer } from './mail.consumer';
+import { MailProcessor } from './mail.processor';
 @Global()
 @Module({
   imports: [
@@ -37,7 +37,7 @@ import { MailConsumer } from './mail.consumer';
       inject: [ConfigService],
     }),
   ],
-  providers: [MailService, MailConsumer],
+  providers: [MailService, MailProcessor],
   exports: [MailService, BullModule, MailerModule],
 })
 export class MailModule {}

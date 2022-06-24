@@ -61,6 +61,7 @@ export class CreateArticleTable1645160828154 implements MigrationInterface {
             name: 'body_ja',
             type: 'text',
             isNullable: true,
+            default: "''",
           },
           {
             name: 'image',
