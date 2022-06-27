@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Seeder } from 'nestjs-seeder';
 import { Repository } from 'typeorm';
+import * as fs from 'fs';
 import { Option } from './option.entity';
 
 @Injectable()
@@ -12,29 +13,10 @@ export class OptionSeeder implements Seeder {
   ) {}
 
   async seed(): Promise<any> {
-    const options = [
-      {
-        name: 'site_name',
-        value: 'Furusato Indonesia',
-        valueJa: null,
-        type: 'varchar',
-      },
-      {
-        name: 'site_title',
-        value: 'Encourage local communities',
-        valueJa: null,
-        type: 'varchar',
-      },
-      {
-        name: 'site_description',
-        value:
-          'We are here to participate in encouraging economic, social and cultural activities to strengthen competitiveness by optimizing the potential of local communities',
-        valueJa: null,
-        type: 'text',
-      },
-    ];
+    const jsonFile = fs.readFileSync('./seeder/options.json', 'utf8');
+    const data = JSON.parse(jsonFile);
 
-    await this.optionRepository.save(options);
+    await this.optionRepository.save(data);
   }
 
   async drop(): Promise<any> {
