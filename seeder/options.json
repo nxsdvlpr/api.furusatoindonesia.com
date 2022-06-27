@@ -1,0 +1,64 @@
+[
+  {
+    "name": "site_name",
+    "value": "Furusato Indonesia",
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "site_title",
+    "value": "Encourage local communities",
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "site_description",
+    "value": "We are here to participate in encouraging economic, social and cultural activities to strengthen competitiveness by optimizing the potential of local communities",
+    "valueJa": null,
+    "type": "text"
+  },
+  [
+    {
+      "id": 4,
+      "name": "contact_email",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    },
+    {
+      "id": 5,
+      "name": "contact_phone",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    },
+    {
+      "id": 6,
+      "name": "contact_instagram",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    },
+    {
+      "id": 7,
+      "name": "contact_facebook",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    },
+    {
+      "id": 8,
+      "name": "contact_youtube",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    },
+    {
+      "id": 9,
+      "name": "contact_twitter",
+      "value": null,
+      "value_ja": null,
+      "type": "varchar"
+    }
+  ]
+]

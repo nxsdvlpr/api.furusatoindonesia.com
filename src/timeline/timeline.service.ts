@@ -73,8 +73,8 @@ export class TimelineService extends TypeOrmQueryService<Timeline> {
 
     return {
       large: result.url,
-      medium: result.url.replace('/upload/', '/upload/w_600,h_600,c_scale/'),
-      small: result.url.replace('/upload/', '/upload/w_150,h_150,c_scale/'),
+      medium: result.url.replace('/upload/', '/upload/h_600,c_scale/'),
+      small: result.url.replace('/upload/', '/upload/h_150,c_scale/'),
     };
   }
 }
