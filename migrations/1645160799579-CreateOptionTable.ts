@@ -20,6 +20,7 @@ export class CreateOptionTable1645160799579 implements MigrationInterface {
           {
             name: 'value',
             type: 'text',
+            isNullable: true,
           },
           {
             name: 'value_ja',

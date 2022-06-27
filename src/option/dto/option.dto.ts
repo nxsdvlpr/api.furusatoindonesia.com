@@ -14,7 +14,7 @@ export class OptionDto {
   @FilterableField()
   name: string;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
   value: string;
 
   @FilterableField({ nullable: true })

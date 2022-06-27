@@ -8,7 +8,7 @@ export class Option {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   value: string;
 
   @Column({ nullable: true })
