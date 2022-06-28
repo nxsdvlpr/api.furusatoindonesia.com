@@ -1,6 +1,10 @@
 import { Injectable, Inject } from '@nestjs/common';
 import * as toStream from 'buffer-to-stream';
-import { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
+import {
+  UploadApiErrorResponse,
+  UploadApiOptions,
+  UploadApiResponse,
+} from 'cloudinary';
 import { assign } from 'lodash';
 
 import { Cloudinary } from './cloudinary.provider';
@@ -18,10 +22,11 @@ export class CloudinaryService {
   async uploadFromUrl(
     path: string,
     url: string,
-    config: any = {},
+    config: UploadApiOptions = {},
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
       assign(config, {
+        resource_type: 'auto',
         folder: process.env.APP_NAME + '/' + path,
       });
 
@@ -42,12 +47,27 @@ export class CloudinaryService {
   async uploadFromBuffer(
     path: string,
     file: Express.Multer.File,
-    config: any = {},
+    config: UploadApiOptions = {},
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
       assign(config, {
+        resource_type: 'auto',
         folder: process.env.APP_NAME + '/' + path,
       });
+
+      const isImage =
+        /image\/png|image\/jpeg|imagesvg\+xml|image\/gif|image\/svg\+xml/.test(
+          file.mimetype,
+        );
+
+      if (!isImage) {
+        assign(config, {
+          resource_type: 'raw',
+          public_id: file.originalname,
+          unique_filename: false,
+          use_filename: true,
+        });
+      }
 
       const upload = this.cloudinary.v2.uploader.upload_stream(
         config,
