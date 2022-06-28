@@ -17,48 +17,46 @@
     "valueJa": null,
     "type": "text"
   },
-  [
-    {
-      "id": 4,
-      "name": "contact_email",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    },
-    {
-      "id": 5,
-      "name": "contact_phone",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    },
-    {
-      "id": 6,
-      "name": "contact_instagram",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    },
-    {
-      "id": 7,
-      "name": "contact_facebook",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    },
-    {
-      "id": 8,
-      "name": "contact_youtube",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    },
-    {
-      "id": 9,
-      "name": "contact_twitter",
-      "value": null,
-      "value_ja": null,
-      "type": "varchar"
-    }
-  ]
+  {
+    "name": "site_favicon",
+    "value": "https://res.cloudinary.com/djtve0hzi/image/upload/v1656387764/api-furusato/general/culkhhb1k5dnu4ufcwmr.png",
+    "value_ja": null,
+    "type": "image"
+  },
+  {
+    "name": "contact_email",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "contact_phone",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "contact_instagram",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "contact_facebook",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "contact_youtube",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  },
+  {
+    "name": "contact_twitter",
+    "value": null,
+    "valueJa": null,
+    "type": "varchar"
+  }
 ]
