@@ -27,9 +27,15 @@ import { TestimonyModule } from './testimony/testimony.module';
 import { TestimonySeeder } from './testimony/testimony.seeder';
 import { MessageSeeder } from './message/message.seeder';
 import { MessageModule } from './message/message.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { MailModule } from './mail/mail.module';
 
 seeder({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRootAsync({
       useFactory: async () =>
         Object.assign(await getConnectionOptions(), {
@@ -50,6 +56,7 @@ seeder({
       }),
     }),
     CommonModule,
+    MailModule,
     OptionModule,
     RoleModule,
     UserModule,
